@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 561541241298839942}
   - component: {fileID: 3113752278386796651}
   - component: {fileID: 5192167485167254838}
-  - component: {fileID: 8032308790191548600}
+  - component: {fileID: 3931250095546005757}
   m_Layer: 6
   m_Name: RocketProjectile
   m_TagString: Untagged
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coldHitAllowed: 1
   hotHitAllowed: 1
---- !u!114 &8032308790191548600
+--- !u!114 &3931250095546005757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -16,8 +16,9 @@ public class Area : Interactor
     private float _effectDelay;
     private List<Collider> _insideColliders = new List<Collider>();
     
-    public override void InitializeInteractor()
+    public override void InitializeInteractor(CharacterCenter _owner)
     {
+        owner = _owner;
         _collider = GetComponent<Collider>();
         if (_collider is SphereCollider sphereCollider)
         {

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 561541241298839942}
   - component: {fileID: 3113752278386796651}
   - component: {fileID: 5192167485167254838}
-  - component: {fileID: 6453063862382552684}
-  - component: {fileID: 5471344229487488852}
   - component: {fileID: 1531293463934872833}
+  - component: {fileID: 969593348029715224}
+  - component: {fileID: 2872862676606156695}
   m_Layer: 6
   m_Name: PistolProjectile
   m_TagString: Untagged
@@ -98,40 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5618bab37a5e506499d5cff70b3a95a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   coldHitAllowed: 1
   hotHitAllowed: 1
---- !u!114 &6453063862382552684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6470580081107731200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 158291587958c8b47bc65e93b31213f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxBounces: 3
---- !u!114 &5471344229487488852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6470580081107731200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6499aa79c1e60e42926f7ec9b975487, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRadius: 6
-  rotationSpeed: 5
-  detectionLayerMask:
-    serializedVersion: 2
-    m_Bits: 55
-  followDuration: 0.75
-  activationDelay: 0.2
 --- !u!114 &1531293463934872833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +115,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armorPenetration: 0.15
   damage: 10
+--- !u!114 &969593348029715224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470580081107731200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158291587958c8b47bc65e93b31213f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBounces: 3
+--- !u!114 &2872862676606156695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470580081107731200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6499aa79c1e60e42926f7ec9b975487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 5
+  rotationSpeed: 5
+  detectionLayerMask:
+    serializedVersion: 2
+    m_Bits: 55
+  followDuration: 0.75
+  activationDelay: 0.35
 --- !u!1 &6710649599851497462
 GameObject:
   m_ObjectHideFlags: 0

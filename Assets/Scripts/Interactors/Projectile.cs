@@ -18,8 +18,9 @@ public class Projectile : Interactor
     private float _remainingDistance;
     private List<InteractorEffect> _effects;
     
-    public void InitializeProjectile()
+    public override void InitializeInteractor(CharacterCenter _owner)
     {
+        owner = _owner;
         _collider = GetComponent<Collider>();
         _rigidbody = GetComponent<Rigidbody>();
         _effects = GetComponents<InteractorEffect>().ToList();
@@ -205,11 +206,5 @@ public class Projectile : Interactor
         }
 
         Destroy(gameObject);
-    }
-
-    public void AddEffect(InteractorEffect effect)
-    {
-        _effects.Append(effect);
-        effect.Initialize(this);
     }
 }

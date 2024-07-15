@@ -79,6 +79,7 @@ public class AutoGuidedEffect : InteractorEffect
     private void RotateTowardsTarget()
     {
         Vector3 direction = (_target.position - Interactor.transform.position).normalized;
+        direction.y = 0;
         _projectile.SetDirection(Vector3.Slerp(_projectile.GetDirection(), direction, rotationSpeed * Time.deltaTime));
     }
 

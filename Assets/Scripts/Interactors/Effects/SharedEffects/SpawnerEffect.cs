@@ -9,7 +9,7 @@ public class SpawnerEffect : InteractorEffect
     public override void DestroyEffect()
     {
         Interactor _interactor = Instantiate(nextPhase, Interactor.transform.position, Quaternion.identity);
-        _interactor.InitializeInteractor();
+        _interactor.InitializeInteractor(Interactor.owner);
         _interactor.ResetInteractor();
         _interactor.PrepareInteractor(Interactor.transform);
         _interactor.CastInteractor();

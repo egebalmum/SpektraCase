@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : GameItem
 {
     public float range;
     public float speed;
@@ -51,7 +51,7 @@ public class Weapon : MonoBehaviour
     private void TriggerWeapon()
     {
         Projectile _projectile = Instantiate(projectile, firePoint.position, firePoint.rotation);
-        _projectile.InitializeProjectile();
+        _projectile.InitializeInteractor(owner);
         _projectile.ResetProjectile();
         _projectile.PrepareProjectile(firePoint, speed, range);
         _projectile.FireProjectile();
