@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageEffect : ProjectileEffect
+public class DamageEffect : InteractorEffect
 {
     [SerializeField] private float armorPenetration;
     [SerializeField] private float damage;
     
     public override void HotHitEffect(Collision collision)
     {
-        Armor armor = collision.gameObject.GetComponent<Armor>();
-        Health health = collision.gameObject.GetComponent<Health>();
+        HotHitEffect(collision.collider);
+    }
+
+    public override void HotHitEffect(Collider other)
+    {
+        Armor armor = other.gameObject.GetComponent<Armor>();
+        Health health = other.gameObject.GetComponent<Health>();
 
         
         float damageToHealth = damage * armorPenetration;
@@ -35,5 +40,4 @@ public class DamageEffect : ProjectileEffect
             health.InstantDamage(damage);
         }
     }
-    
 }

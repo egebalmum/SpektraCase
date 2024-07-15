@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-public class Projectile : MonoBehaviour
+public class Projectile : Interactor
 {
     [SerializeField] private bool coldHitAllowed;
     [SerializeField] private bool hotHitAllowed;
@@ -16,13 +16,13 @@ public class Projectile : MonoBehaviour
     private bool _isFired;
     private bool _isDestroyed;
     private float _remainingDistance;
-    private List<ProjectileEffect> _effects;
+    private List<InteractorEffect> _effects;
     
     public void InitializeProjectile()
     {
         _collider = GetComponent<Collider>();
         _rigidbody = GetComponent<Rigidbody>();
-        _effects = GetComponents<ProjectileEffect>().ToList();
+        _effects = GetComponents<InteractorEffect>().ToList();
         InitializeEffects();
     }
     private void InitializeEffects()
@@ -39,11 +39,21 @@ public class Projectile : MonoBehaviour
             return;
         }
         MoveProjectile();
+        
+    }
+
+    private void Update()
+    {
+        if (!_isFired)
+        {
+            return;
+        }
         foreach (var effect in _effects)
         {
             effect.UpdateEffect();
         }
     }
+
     private void OnCollisionEnter(Collision other)
     {
         OnCollision(other);
@@ -135,7 +145,7 @@ public class Projectile : MonoBehaviour
         }
         if (_projectileLivesHot <= 0 || _projectileLivesCold <= 0)
         {
-            DestroyProjectile();
+            DestroyInteractor();
         }
     }
 
@@ -147,6 +157,16 @@ public class Projectile : MonoBehaviour
         _direction = rotation * Vector3.forward;
         _speed = speed;
         _remainingDistance = range;
+    }
+
+    public override void PrepareInteractor(Transform startingPoint)
+    {
+        transform.position = startingPoint.position;
+        transform.rotation = startingPoint.rotation;
+        Quaternion rotation = startingPoint.rotation;
+        _direction = rotation * Vector3.forward;
+        _speed = 40;
+        _remainingDistance = 100;
     }
 
     public void FireProjectile()
@@ -163,16 +183,17 @@ public class Projectile : MonoBehaviour
     {
         if (_remainingDistance <= 0)
         {
-            DestroyProjectile();
+            DestroyInteractor();
         }
         Vector3 previousPosition = transform.position;
-        Vector3 newPosition = previousPosition + _direction * (_speed * Time.deltaTime);
+        Vector3 newPosition = previousPosition + _direction * (_speed * Time.fixedDeltaTime);
         _rigidbody.MovePosition(newPosition);
         _remainingDistance -= Vector3.Distance(previousPosition, newPosition);
     }
-    
-    public void DestroyProjectile()
+
+    public override void DestroyInteractor()
     {
+        base.DestroyInteractor();
         if (_isDestroyed)
         {
             return;
@@ -186,7 +207,7 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void AddEffect(ProjectileEffect effect)
+    public void AddEffect(InteractorEffect effect)
     {
         _effects.Append(effect);
         effect.Initialize(this);

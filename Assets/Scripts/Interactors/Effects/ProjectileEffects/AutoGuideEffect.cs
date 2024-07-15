@@ -2,7 +2,8 @@ using System.Numerics;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-public class AutoGuidedEffect : ProjectileEffect
+[RequireComponent(typeof(Projectile))]
+public class AutoGuidedEffect : InteractorEffect
 {
     [SerializeField] private float detectionRadius = 5f;
     [SerializeField] private float rotationSpeed = 5f;
@@ -13,13 +14,15 @@ public class AutoGuidedEffect : ProjectileEffect
     private float _activationTimer;
     private bool _isFollowing;
     private float _followTimer;
+    private Projectile _projectile;
 
-    public override void Initialize(Projectile projectile)
+    public override void Initialize(Interactor interactor)
     {
-        base.Initialize(projectile);
+        base.Initialize(interactor);
         _activationTimer = 0f;
         _isFollowing = false;
         _followTimer = 0f;
+        _projectile = (Projectile)Interactor;
     }
     public override void UpdateEffect()
     {
@@ -47,8 +50,8 @@ public class AutoGuidedEffect : ProjectileEffect
 
     private void FindTarget()
     {
-        ExplosionDebugManager.RegisterExplosion(Projectile.transform.position, detectionRadius, Color.green);
-        Collider[] hitColliders = Physics.OverlapSphere(Projectile.transform.position, detectionRadius, detectionLayerMask);
+        ExplosionDebugManager.RegisterExplosion(Interactor.transform.position, detectionRadius, Color.green);
+        Collider[] hitColliders = Physics.OverlapSphere(Interactor.transform.position, detectionRadius, detectionLayerMask);
         Transform closestTarget = null;
         float closestDistance = Mathf.Infinity;
 
@@ -57,7 +60,7 @@ public class AutoGuidedEffect : ProjectileEffect
             Health health = hitCollider.GetComponent<Health>();
             if (health != null)
             {
-                float distance = Vector3.Distance(Projectile.transform.position, hitCollider.transform.position);
+                float distance = Vector3.Distance(Interactor.transform.position, hitCollider.transform.position);
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
@@ -75,8 +78,8 @@ public class AutoGuidedEffect : ProjectileEffect
 
     private void RotateTowardsTarget()
     {
-        Vector3 direction = (_target.position - Projectile.transform.position).normalized;
-        Projectile.SetDirection(Vector3.Slerp(Projectile.GetDirection(), direction, rotationSpeed * Time.deltaTime));
+        Vector3 direction = (_target.position - Interactor.transform.position).normalized;
+        _projectile.SetDirection(Vector3.Slerp(_projectile.GetDirection(), direction, rotationSpeed * Time.deltaTime));
     }
 
     public override void ResetEffect()
