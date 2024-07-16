@@ -9,43 +9,49 @@ public class Weapon : GameItem
     public float speed;
     public float fireRate;
     public Transform firePoint;
-    private IFiringMode currentFiringMode;
     public Projectile projectile;
-    private bool _isTriggerReady = true;
     public List<IFiringMode> firingModes;
     public String mode;
+    [SerializeField] private GameObject visuals;
+    private IFiringMode _currentFiringMode;
+    private bool _isTriggerReady = true;
 
-    void Start()
+    public override void Initialize(CharacterCenter _owner)
     {
+        owner = _owner;
         firingModes = GetComponents<IFiringMode>().ToList();
         SetFiringMode(firingModes[0]);
     }
-    
+
     void Update()
     {
+        if (!isActive)
+        {
+            return;
+        }
         if (_isTriggerReady && Input.GetKeyDown(KeyCode.C))
         {
             ChangeFiringMode();
         }
         
-        if (currentFiringMode != null && currentFiringMode.CheckInput() && _isTriggerReady)
+        if (_currentFiringMode != null && _currentFiringMode.CheckInput() && _isTriggerReady)
         {
-            currentFiringMode.Fire(fireRate, TriggerWeapon, SetTriggerReady);
+            _currentFiringMode.Fire(fireRate, TriggerWeapon, SetTriggerReady);
             SetTriggerReady(false);
         }
     }
 
     public void ChangeFiringMode()
     {
-        int index = firingModes.IndexOf(currentFiringMode);
+        int index = firingModes.IndexOf(_currentFiringMode);
         int size = firingModes.Count;
         int newIndex = (index + 1) % size;
         SetFiringMode(firingModes[newIndex]);
     }
     public void SetFiringMode(IFiringMode newFiringMode)
     {
-        currentFiringMode = newFiringMode;
-        mode = currentFiringMode.GetModeName();
+        _currentFiringMode = newFiringMode;
+        mode = _currentFiringMode.GetModeName();
     }
 
     private void TriggerWeapon()
@@ -65,5 +71,18 @@ public class Weapon : GameItem
     private void SetTriggerReady(bool value)
     {
         _isTriggerReady = value;
+    }
+
+    public override void SetActive(bool value)
+    {
+        base.SetActive(value);
+        if (value)
+        {
+            visuals.SetActive(true);
+        }
+        else
+        {
+            visuals.SetActive(false);
+        }
     }
 }
