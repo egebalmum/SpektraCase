@@ -9,7 +9,7 @@ public class GameItem : MonoBehaviour
     public string name;
     public bool isActive;
 
-    public virtual void SetActive(bool value)
+    public virtual void SetItemActive(bool value)
     {
         isActive = value;
     }
@@ -19,4 +19,5 @@ public class GameItem : MonoBehaviour
     }
     public virtual void ReleaseItem() {}
     public virtual void Initialize(CharacterCenter owner) { }
+    
 }

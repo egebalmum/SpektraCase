@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Follower : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    [SerializeField] private string characterName;
     [SerializeField] private Vector3 offset; 
     
     void LateUpdate()
     {
-        if (target != null)
+        CharacterCenter character =  FindObjectsOfType<CharacterCenter>().First(character => character.name == characterName);
+        
+        if (character != null)
         {
-            transform.position = target.position + offset;
+            transform.position = character.transform.position + offset;
         }
     }
 }

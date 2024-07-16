@@ -8,6 +8,7 @@ public class Hotbar
     public HotbarSlot[] hotbarSlots;
     public int selectedIndex = 0;
     [SerializeField] private int hotbarSize = 5;
+    public event Action OnHotbarEffected;
 
     public void Initialize()
     {
@@ -41,11 +42,12 @@ public class Hotbar
 
     public void SelectSlot(int index)
     {
-        if (index < 0 || index >= hotbarSlots.Length)
+        if (index < 0 || index >= hotbarSlots.Length || index == selectedIndex)
         {
             return;
         }
         selectedIndex = index;
+        OnHotbarEffected?.Invoke();
     }
     
 
@@ -56,6 +58,10 @@ public class Hotbar
             return;
         }
         hotbarSlots[slotIndex].AssignItem(item);
+        if (selectedIndex == slotIndex)
+        {
+            OnHotbarEffected?.Invoke();
+        }
         
     }
 

@@ -73,9 +73,9 @@ public class Weapon : GameItem
         _isTriggerReady = value;
     }
 
-    public override void SetActive(bool value)
+    public override void SetItemActive(bool value)
     {
-        base.SetActive(value);
+        base.SetItemActive(value);
         if (value)
         {
             visuals.SetActive(true);

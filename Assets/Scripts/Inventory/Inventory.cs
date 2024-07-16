@@ -30,7 +30,7 @@ public class Inventory : MonoBehaviour
         GameItem _item = Instantiate(item, _owner.transform);
         _item.transform.localPosition = Vector3.zero;
         _item.Initialize(_owner);
-        _item.SetActive(false);
+        _item.SetItemActive(false);
         hotbar.AssignItemToSlot(hotbar.GetEmptyIndex(), _item);
         return true;
     }

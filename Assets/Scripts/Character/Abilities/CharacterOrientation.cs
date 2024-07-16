@@ -26,10 +26,6 @@ public class CharacterOrientation : CharacterAbility
     {
         Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
         transform.rotation = targetRotation;
-        if (!GetAbilityEnabled())
-        {
-            return;
-        }
         LookAtCursor();
     }
 

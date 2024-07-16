@@ -6,10 +6,14 @@ using UnityEngine;
 public abstract class CharacterAbility : MonoBehaviour
 {
     private bool _isEnabled = true;
-    public abstract void Initialize();
-    public abstract void EarlyTick();
-    public abstract void Tick();
-    public abstract void LateTick();
+
+    public virtual void Initialize() { }
+    public virtual void EarlyTick() { }
+    public virtual void Tick() { }
+    public virtual void LateTick() { }
+    public virtual void ResetAbility() { }
+    public virtual void OnDeath() { }
+    public virtual void OnRespawn() { }
 
     public virtual void SetAbilityEnabled(bool value)
     {
@@ -19,15 +23,5 @@ public abstract class CharacterAbility : MonoBehaviour
     public virtual  bool GetAbilityEnabled()
     {
         return _isEnabled;
-    }
-
-    public void OnEnable()
-    {
-        SetAbilityEnabled(true);
-    }
-
-    public void OnDisable()
-    {
-        SetAbilityEnabled(false);
     }
 }

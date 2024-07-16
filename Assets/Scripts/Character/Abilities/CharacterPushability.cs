@@ -13,11 +13,6 @@ public class CharacterPushability : CharacterAbility
             _characterController = GetComponent<CharacterController>();
         }
     }
-
-    public override void EarlyTick()
-    {
-       
-    }
     
     public override void Tick()
     {
@@ -27,13 +22,24 @@ public class CharacterPushability : CharacterAbility
             pushForce = Vector3.Lerp(pushForce, Vector3.zero, pushForceDecay * Time.deltaTime);
         }
     }
-    public override void LateTick()
-    {
-        
-    }
 
     public void ApplyPush(Vector3 direction, float force)
     {
+        if (!GetAbilityEnabled())
+        {
+            return;
+        }
         pushForce = direction.normalized * force;
+    }
+
+
+    public override void ResetAbility()
+    {
+        pushForce = Vector3.zero;
+    }
+
+    public override void OnDeath()
+    {
+        ResetAbility();
     }
 }

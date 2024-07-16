@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class CharacterCenter : MonoBehaviour
 {
+    public string characterName;
     private List<CharacterAbility> _abilities;
-    
+    public Action<CharacterCenter> OnCharacterDeath;
+    [SerializeField] private GameObject characterVisuals;
 
     void Start()
     {
@@ -70,14 +72,24 @@ public class CharacterCenter : MonoBehaviour
             ability.LateTick();
         }
     }
-
-    public void OnDeath()
+    public void Death()
     {
-           
+        OnCharacterDeath?.Invoke(this);
+        foreach (CharacterAbility ability in _abilities)
+        {
+            ability.SetAbilityEnabled(false);
+            ability.OnDeath();
+        }
+        characterVisuals.SetActive(false);
     }
 
-    public void OnRespawn()
+    public void Respawn()
     {
-        
+        characterVisuals.SetActive(true);
+        foreach (CharacterAbility ability in _abilities)
+        {
+            ability.SetAbilityEnabled(true);
+            ability.OnRespawn();
+        }
     }
 }
