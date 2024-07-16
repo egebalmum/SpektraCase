@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interactor : MonoBehaviour
 {
     public CharacterCenter owner;
+    
     public virtual void DestroyInteractor() { }
     public virtual void ResetInteractor() { }
     public virtual void InitializeInteractor(CharacterCenter owner) { }

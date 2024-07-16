@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Health : CharacterAbility
 {
-    [SerializeField] private float healthPoint = 100;
+    [SerializeField] private float startHealthPoint = 100;
     private CharacterCenter _character;
-    [SerializeField]private float _currentHealth;
+    private float _currentHealth;
 
     public override void Initialize()
     {
         _character = GetComponent<CharacterCenter>();
-        _currentHealth = healthPoint;
+        _currentHealth = startHealthPoint;
     }
 
     public void InstantDamage(float value)
@@ -43,7 +44,7 @@ public class Health : CharacterAbility
 
     public override void ResetAbility()
     {
-        _currentHealth = healthPoint;
+        _currentHealth = startHealthPoint;
     }
 
     public override void OnRespawn()

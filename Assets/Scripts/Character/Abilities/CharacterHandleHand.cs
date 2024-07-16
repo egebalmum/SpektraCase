@@ -76,4 +76,9 @@ public class CharacterHandleHand : CharacterAbility
             _onHand.SetItemActive(true);
         }
     }
+
+    public GameItem GetHandItem()
+    {
+        return _onHand;
+    }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnerEffect : InteractorEffect
 {
-    [SerializeField] private Interactor nextPhase;
+    public Interactor nextPhase;
 
     public override void DestroyEffect()
     {

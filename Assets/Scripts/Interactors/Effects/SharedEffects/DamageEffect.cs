@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DamageEffect : InteractorEffect
 {
-    [SerializeField] private float armorPenetration;
-    [SerializeField] private float damage;
+    public float armorPenetration;
+    public float damage;
     
     public override void HotHitEffect(Collision collision)
     {

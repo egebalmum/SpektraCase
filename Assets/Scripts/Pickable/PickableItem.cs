@@ -10,6 +10,10 @@ public class PickableItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.GetComponent<InteractPickable>() == null)
+        {
+            return;
+        }
         Inventory inventory = other.GetComponent<Inventory>();
         if (inventory != null)
         {

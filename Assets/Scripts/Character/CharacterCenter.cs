@@ -80,12 +80,22 @@ public class CharacterCenter : MonoBehaviour
             ability.SetAbilityEnabled(false);
             ability.OnDeath();
         }
+        Collider[] colliders = GetComponents<Collider>();
+        foreach (var collider in colliders)
+        {
+            collider.enabled = false;
+        }
         characterVisuals.SetActive(false);
     }
 
     public void Respawn()
     {
         characterVisuals.SetActive(true);
+        Collider[] colliders = GetComponents<Collider>();
+        foreach (var collider in colliders)
+        {
+            collider.enabled = true;
+        }
         foreach (CharacterAbility ability in _abilities)
         {
             ability.SetAbilityEnabled(true);

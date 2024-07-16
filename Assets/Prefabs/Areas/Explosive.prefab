@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9340fcaf7d178a4cb86be488377623a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   areaRadius: 7
   areaLayerMask:
     serializedVersion: 2

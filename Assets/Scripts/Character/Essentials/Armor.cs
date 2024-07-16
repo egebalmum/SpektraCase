@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Armor : CharacterAbility
 {
-    [SerializeField] private float armorPoint = 100;
+    [SerializeField] private float startArmorPoint = 100;
     [SerializeField] private float _currentArmor;
     public override void Initialize()
     {
-        _currentArmor = armorPoint;
+        _currentArmor = startArmorPoint;
     }
 
     public void InstantDamage(float value)
@@ -29,7 +30,7 @@ public class Armor : CharacterAbility
 
     public override void ResetAbility()
     {
-        _currentArmor = armorPoint;
+        _currentArmor = startArmorPoint;
     }
 
     public override void OnRespawn()
