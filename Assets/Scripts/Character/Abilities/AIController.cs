@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+
 public class AIController : CharacterAbility
 {
     [HideInInspector] public AIBehaviour currentBehaviour;
@@ -9,44 +10,41 @@ public class AIController : CharacterAbility
     public float chaseDistance = 10f;
     public float shootDistance = 5f;
     [HideInInspector] public NavMeshAgent agent;
-    [HideInInspector] public AIBehaviour patrollingBehaviour;
-    [HideInInspector] public AIBehaviour chasingBehaviour;
-    [HideInInspector] public AIBehaviour shootingBehaviour;
+    [HideInInspector] public PatrollingBehaviour patrollingBehaviour;
+    [HideInInspector] public ChasingBehaviour chasingBehaviour;
+    [HideInInspector] public ShootingBehaviour shootingBehaviour;
 
     void Start()
     {
         player = FindObjectsOfType<CharacterCenter>().First(character => character.name.Equals(targetName)).transform;
         agent = GetComponent<NavMeshAgent>();
         
-        patrollingBehaviour = GetComponent<PatrollingBehaviour>();
-        chasingBehaviour = GetComponent<ChasingBehaviour>();
-        shootingBehaviour = GetComponent<ShootingBehaviour>();
-
-        patrollingBehaviour.Initialize(this);
-        chasingBehaviour.Initialize(this);
-        shootingBehaviour.Initialize(this);
+        InitializeBehaviour(ref patrollingBehaviour);
+        InitializeBehaviour(ref chasingBehaviour);
+        InitializeBehaviour(ref shootingBehaviour);
 
         SetState(patrollingBehaviour);
     }
 
+    private void InitializeBehaviour<T>(ref T behaviour) where T : AIBehaviour
+    {
+        behaviour = GetComponent<T>();
+        if (behaviour != null)
+        {
+            behaviour.Initialize(this);
+        }
+    }
+
     public override void Tick()
     {
-        currentBehaviour.Tick();
+        currentBehaviour?.Tick();
     }
 
     public void SetState(AIBehaviour newBehaviour)
     {
-        if (currentBehaviour != null)
-        {
-            currentBehaviour.OnExit();
-        }
-
+        currentBehaviour?.OnExit();
         currentBehaviour = newBehaviour;
-
-        if (currentBehaviour != null)
-        {
-            currentBehaviour.OnEnter();
-        }
+        currentBehaviour?.OnEnter();
     }
 
     public bool HasLineOfSight()
@@ -66,11 +64,13 @@ public class AIController : CharacterAbility
     public override void OnDeath()
     {
         agent.enabled = false;
+        SetState(null);
     }
 
     public override void OnRespawn()
     {
         agent.enabled = true;
         agent.ResetPath();
+        SetState(patrollingBehaviour);
     }
 }

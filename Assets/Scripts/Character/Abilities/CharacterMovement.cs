@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
 
 public class CharacterMovement : CharacterAbility
 {
@@ -14,8 +9,7 @@ public class CharacterMovement : CharacterAbility
     private float _defaultMovementSpeed;
     private MovementIndicator _indicator;
     private bool _isPlayerControlled;
-    private float horizontalMovement;
-    private float verticalMovement;
+    private PlayerInputHandler _inputHandler;
 
     public override void Initialize()
     {
@@ -23,18 +17,23 @@ public class CharacterMovement : CharacterAbility
         _characterController = GetComponent<CharacterController>();
         _defaultMovementSpeed = movementSpeed;
         _indicator = GetComponentInChildren<MovementIndicator>();
+
+        if (_isPlayerControlled)
+        {
+            _inputHandler = new PlayerInputHandler();
+        }
     }
 
-
-    public override void EarlyTick()
-    {
-        return;
-    }
+    public override void EarlyTick() { }
 
     public override void Tick()
     {
-        HandleInput();
-        moveDirection = new Vector3(horizontalMovement, 0, verticalMovement).normalized;
+        if (_isPlayerControlled)
+        {
+            Vector2 input = _inputHandler.GetMovementInput();
+            moveDirection = new Vector3(input.x, 0, input.y).normalized;
+        }
+        
         if (moveDirection != Vector3.zero) 
         { 
             _characterController.Move(moveDirection * (movementSpeed * Time.deltaTime));
@@ -64,14 +63,13 @@ public class CharacterMovement : CharacterAbility
     {
         movementSpeed = _defaultMovementSpeed;
     }
-
-    public override void HandleInput()
+}
+public partial class PlayerInputHandler
+{
+    public Vector2 GetMovementInput()
     {
-        if (!_isPlayerControlled)
-        {
-            return;
-        }
-        horizontalMovement = Input.GetAxisRaw("Horizontal");
-        verticalMovement = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        return new Vector2(horizontal, vertical);
     }
 }

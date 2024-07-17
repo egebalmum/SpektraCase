@@ -9,6 +9,7 @@ public class Area : Interactor
     [SerializeField] private LayerMask areaLayerMask;
     [SerializeField] private float areaDelay = 10f;
     [SerializeField] private GameObject models;
+    
     private Collider _collider;
     private List<InteractorEffect> _effects;
     private bool _isCasted;
@@ -48,6 +49,7 @@ public class Area : Interactor
             DestroyInteractor();
             return;
         }
+        
         _effectDelay -= Time.deltaTime;
         foreach (var effect in _effects)
         {
@@ -66,6 +68,7 @@ public class Area : Interactor
         {
             return;
         }
+        
         foreach (var effect in _effects)
         {
             effect.ResetEffect();
@@ -82,6 +85,7 @@ public class Area : Interactor
     {
         ExplosionDebugManager.RegisterExplosion(transform.position, areaRadius, Color.yellow);
         _isCasted = true;
+        
         foreach (var effect in _effects)
         {
             effect.FireEffect();
@@ -105,6 +109,7 @@ public class Area : Interactor
     public override void DestroyInteractor()
     {
         ExplosionDebugManager.RegisterExplosion(transform.position, areaRadius, Color.red);
+        
         foreach (var effect in _effects)
         {
             foreach (var collider in _insideColliders)

@@ -3,13 +3,13 @@ using UnityEngine;
 public class Armor : CharacterAbility
 {
     [SerializeField] private float startArmorPoint = 100;
-    [SerializeField] private float _currentArmor;
+    private float _currentArmor;
     public override void Initialize()
     {
         _currentArmor = startArmorPoint;
     }
 
-    public void InstantDamage(float value)
+    public void ApplyDamageInstant(float value)
     {
         if (!GetAbilityEnabled())
         {
@@ -18,7 +18,7 @@ public class Armor : CharacterAbility
        _currentArmor -= value;
     }
 
-    public float getArmorPoint()
+    public float GetArmorPoint()
     {
         return _currentArmor;
     }

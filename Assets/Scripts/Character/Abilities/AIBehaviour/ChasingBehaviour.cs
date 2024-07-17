@@ -7,12 +7,14 @@ public class ChasingBehaviour : AIBehaviour
     private bool isChasingLastKnownPosition = false;
     private CharacterOrientation _orientation;
 
+    public override void Initialize(AIController controller)
+    {
+        base.Initialize(controller);
+        _orientation = GetComponent<CharacterOrientation>();
+    }
+
     public override void OnEnter()
     {
-        if (_orientation == null)
-        {
-            _orientation = GetComponent<CharacterOrientation>();
-        }
         aiController.agent.speed = chaseSpeed;
         aiController.agent.isStopped = false;
         lastKnownPosition = aiController.player.position;

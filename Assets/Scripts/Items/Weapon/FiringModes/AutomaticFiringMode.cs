@@ -2,14 +2,14 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class AutomaticFiringMode : MonoBehaviour ,IFiringMode
+public class AutomaticFiringMode : FiringMode
 {
-    public string GetModeName()
+    public override string GetModeName()
     {
-        return "Auto";
+        return modeName;
     }
 
-    public void Fire(float fireRate, Action shoot, Action setTriggerReady)
+    public override void Fire(float fireRate, Action shoot, Action setTriggerReady)
     {
         StartCoroutine(FireCoroutine(fireRate, shoot, setTriggerReady));
     }
@@ -21,7 +21,7 @@ public class AutomaticFiringMode : MonoBehaviour ,IFiringMode
         setTriggerReady();
     }
 
-    public bool CheckInput()
+    public override bool CheckInput()
     {
         return Input.GetKey(KeyCode.Mouse0);
     }

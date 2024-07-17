@@ -18,17 +18,26 @@ public class CharacterPushability : CharacterAbility
     {
         if (pushForce.magnitude > 0.1f)
         {
-            if (_characterController != null)
-            {
-                _characterController.Move(pushForce * Time.deltaTime);
-            }
-            else if (_aiController != null)
-            {
-                _aiController.Move(pushForce* Time.deltaTime);
-            }
-            
-            pushForce = Vector3.Lerp(pushForce, Vector3.zero, pushForceDecay * Time.deltaTime);
+            ApplyPushForce();
+            DecayPushForce();
         }
+    }
+
+    private void ApplyPushForce()
+    {
+        if (_characterController != null)
+        {
+            _characterController.Move(pushForce * Time.deltaTime);
+        }
+        else if (_aiController != null)
+        {
+            _aiController.Move(pushForce * Time.deltaTime);
+        }
+    }
+
+    private void DecayPushForce()
+    {
+        pushForce = Vector3.Lerp(pushForce, Vector3.zero, pushForceDecay * Time.deltaTime);
     }
 
     public void ApplyPush(Vector3 direction, float force)
@@ -39,7 +48,6 @@ public class CharacterPushability : CharacterAbility
         }
         pushForce = direction.normalized * force;
     }
-
 
     public override void ResetAbility()
     {

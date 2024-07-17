@@ -10,11 +10,11 @@ public class InteractorSpawnEffect : InteractorEffect
 
     public override void DestroyEffect()
     {
-        Interactor _interactor = Instantiate(interactor, Interactor.transform.position, Quaternion.identity);
-        _interactor.gameObject.SetActive(true);
-        _interactor.InitializeInteractor(Interactor.owner);
-        _interactor.ResetInteractor();
-        _interactor.PrepareInteractor(Interactor.transform);
-        _interactor.CastInteractor();
+        Interactor newInteractor = Instantiate(interactor, Interactor.transform.position, Quaternion.identity);
+        newInteractor.gameObject.SetActive(true);
+        newInteractor.InitializeInteractor(Interactor.owner);
+        newInteractor.ResetInteractor();
+        newInteractor.PrepareInteractor(Interactor.transform);
+        newInteractor.CastInteractor();
     }
 }

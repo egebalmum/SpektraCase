@@ -10,10 +10,7 @@ public class PatrollingBehaviour : AIBehaviour
     public override void Initialize(AIController controller)
     {
         base.Initialize(controller);
-        if (_orientation == null)
-        {
-            _orientation = GetComponent<CharacterOrientation>();
-        }
+        _orientation = GetComponent<CharacterOrientation>();
         foreach (var waypoint in waypoints)
         {
             waypoint.transform.parent = null;

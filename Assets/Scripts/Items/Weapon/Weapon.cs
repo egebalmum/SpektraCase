@@ -11,22 +11,23 @@ public class Weapon : GameItem
     public float fireRate;
     public Transform firePoint;
     public Projectile projectile;
-    public List<IFiringMode> firingModes;
+    public List<FiringMode> firingModes;
     public String mode;
     [SerializeField] private GameObject visuals;
-    private IFiringMode _currentFiringMode;
+    
+    private FiringMode _currentFiringMode;
     private bool _isTriggerReady = true;
     private bool _isPlayerControlled;
 
     public override void Initialize(CharacterCenter _owner)
     {
+        base.Initialize(_owner);
         projectile = Instantiate(projectile, Vector3.zero, Quaternion.identity);
         projectile.gameObject.SetActive(false);
         InstantiateChildInteractors(projectile);
         weaponUpgrades = new List<WeaponUpgrade>();
-        owner = _owner;
         _isPlayerControlled = owner.characterName.Equals(LevelManager.instance.mainPlayerName);
-        firingModes = GetComponents<IFiringMode>().ToList();
+        firingModes = GetComponents<FiringMode>().ToList();
         SetFiringMode(firingModes[0]);
         owner.OnCharacterDeath += RemoveUpgrades;
     }
@@ -77,10 +78,6 @@ public class Weapon : GameItem
         {
             Shoot();
         }
-        else
-        {
-            //try to shoot
-        }
     }
     private void Shoot()
     {
@@ -91,11 +88,10 @@ public class Weapon : GameItem
     public void ChangeFiringMode()
     {
         int index = firingModes.IndexOf(_currentFiringMode);
-        int size = firingModes.Count;
-        int newIndex = (index + 1) % size;
+        int newIndex = (index + 1) % firingModes.Count;
         SetFiringMode(firingModes[newIndex]);
     }
-    public void SetFiringMode(IFiringMode newFiringMode)
+    public void SetFiringMode(FiringMode newFiringMode)
     {
         _currentFiringMode = newFiringMode;
         mode = _currentFiringMode.GetModeName();
@@ -124,24 +120,12 @@ public class Weapon : GameItem
     public override void SetItemActive(bool value)
     {
         base.SetItemActive(value);
-        if (value)
-        {
-            visuals.SetActive(true);
-        }
-        else
-        {
-            visuals.SetActive(false);
-        }
+        visuals.SetActive(value);
     }
 
     public bool AllowedToAdd(WeaponUpgrade upgrade)
     {
-        WeaponUpgrade upgradeFromList = weaponUpgrades.FirstOrDefault(element => element.GetType() == upgrade.GetType());
-        if (upgradeFromList != null)
-        {
-            return false;
-        }
-        return true;
+        return !weaponUpgrades.Any(element => element.GetType() == upgrade.GetType());
     }
 
     public void AddUpgrade(WeaponUpgrade upgrade)

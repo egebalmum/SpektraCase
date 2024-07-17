@@ -5,99 +5,100 @@ using UnityEngine;
 
 public class CharacterCenter : MonoBehaviour
 {
+    [SerializeField] private GameObject characterVisuals;
     [HideInInspector] public string characterName;
+    
     private List<CharacterAbility> _abilities;
     public Action<CharacterCenter> OnCharacterDeath;
-    [SerializeField] private GameObject characterVisuals;
 
     void Start()
     {
         FindAbilities();
-        AbilityInitializes();
+        InitializeAbilities();
     }
-    
+
     void Update()
     {
-        AbilityEarlyTicks();
-        AbilityTicks();
-        AbilityLateTicks();
+        ProcessAbilitiesEarlyTicks();
+        ProcessAbilitiesTicks();
+        ProcessAbilitiesLateTicks();
     }
 
     private void FindAbilities()
     {
         _abilities = GetComponents<CharacterAbility>().ToList();
     }
-    private void AbilityInitializes()
+
+    private void InitializeAbilities()
     {
-        foreach (CharacterAbility ability in _abilities)
+        foreach (var ability in _abilities)
         {
             ability.Initialize();
         }
     }
 
-    private void AbilityEarlyTicks()
+    private void ProcessAbilitiesEarlyTicks()
     {
-        foreach (CharacterAbility ability in _abilities)
+        foreach (var ability in _abilities)
         {
-            if (!ability.GetAbilityEnabled())
+            if (ability.GetAbilityEnabled())
             {
-                continue;
+                ability.EarlyTick();
             }
-            ability.EarlyTick();
         }
     }
-    
-    private void AbilityTicks()
+
+    private void ProcessAbilitiesTicks()
     {
-        foreach (CharacterAbility ability in _abilities)
+        foreach (var ability in _abilities)
         {
-            if (!ability.GetAbilityEnabled())
+            if (ability.GetAbilityEnabled())
             {
-                continue;
+                ability.Tick();
             }
-            ability.Tick();
         }
     }
-    
-    private void AbilityLateTicks()
+
+    private void ProcessAbilitiesLateTicks()
     {
-        foreach (CharacterAbility ability in _abilities)
+        foreach (var ability in _abilities)
         {
-            if (!ability.GetAbilityEnabled())
+            if (ability.GetAbilityEnabled())
             {
-                continue;
+                ability.LateTick();
             }
-            ability.LateTick();
         }
     }
+
     public void Death()
     {
         OnCharacterDeath?.Invoke(this);
-        foreach (CharacterAbility ability in _abilities)
+        foreach (var ability in _abilities)
         {
             ability.SetAbilityEnabled(false);
             ability.OnDeath();
         }
-        Collider[] colliders = GetComponents<Collider>();
-        foreach (var collider in colliders)
-        {
-            collider.enabled = false;
-        }
+        SetCollidersEnabled(false);
         characterVisuals.SetActive(false);
     }
 
     public void Respawn()
     {
         characterVisuals.SetActive(true);
-        Collider[] colliders = GetComponents<Collider>();
-        foreach (var collider in colliders)
-        {
-            collider.enabled = true;
-        }
-        foreach (CharacterAbility ability in _abilities)
+        SetCollidersEnabled(true);
+        foreach (var ability in _abilities)
         {
             ability.SetAbilityEnabled(true);
             ability.OnRespawn();
+        }
+    }
+
+    private void SetCollidersEnabled(bool enabled)
+    {
+        var colliders = GetComponents<Collider>();
+        foreach (var collider in colliders)
+        {
+            collider.enabled = enabled;
         }
     }
 }

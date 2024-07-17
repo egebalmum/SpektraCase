@@ -12,6 +12,11 @@ public class PushEffect : InteractorEffect
 
     public override void HotHitEffect(Collider other)
     {
+        CharacterPushability ability = other.GetComponent<CharacterPushability>();
+        if (ability == null)
+        {
+            return;
+        }
         Vector3 direction;
         if (Interactor is Projectile projectile)
         {
@@ -19,13 +24,10 @@ public class PushEffect : InteractorEffect
         }
         else
         {
-            direction = other.transform.position - Interactor.transform.position;
+            direction = (other.transform.position - Interactor.transform.position).normalized;
         }
         direction.y = 0;
-        CharacterPushability ability = other.GetComponent<CharacterPushability>();
-        if (ability != null)
-        {
-            ability.ApplyPush(direction, force);
-        }
+        ability.ApplyPush(direction, force);
     }
+    
 }

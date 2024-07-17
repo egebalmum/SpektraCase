@@ -2,8 +2,8 @@ using UnityEngine;
 public class Health : CharacterAbility
 {
     [SerializeField] private float startHealthPoint = 100;
+    private float _currentHealth;
     private CharacterCenter _character;
-    [SerializeField] private float _currentHealth;
 
     public override void Initialize()
     {
@@ -11,7 +11,7 @@ public class Health : CharacterAbility
         _currentHealth = startHealthPoint;
     }
 
-    public void InstantDamage(float value)
+    public void ApplyDamageInstant(float value)
     {
         if (!GetAbilityEnabled())
         {

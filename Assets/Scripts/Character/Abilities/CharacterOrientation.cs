@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterOrientation : CharacterAbility
@@ -8,34 +6,34 @@ public class CharacterOrientation : CharacterAbility
     public Vector3 lookDirection;
     private Camera _mainCamera;
     private bool _isPlayerControlled;
+    private PlayerInputHandler _inputHandler;
 
     public override void Initialize()
     {
         _isPlayerControlled = GetComponent<CharacterCenter>().characterName.Equals(LevelManager.instance.mainPlayerName);
         _mainCamera = Camera.main;
+
+        if (_isPlayerControlled)
+        {
+            _inputHandler = new PlayerInputHandler();
+        }
     }
-    
 
     public override void Tick()
     {
+        if (_isPlayerControlled)
+        {
+            Vector3 mousePosition = _inputHandler.GetMousePosition();
+            AimAtMousePosition(mousePosition);
+        }
+
         Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
         transform.rotation = targetRotation;
-        LookAtCursor();
     }
 
-    private void LookAtCursor()
+    private void AimAtMousePosition(Vector3 mousePosition)
     {
-        HandleInput();
-    }
-
-    public override void HandleInput()
-    {
-        if (!_isPlayerControlled)
-        {
-            return;
-        }
-        Vector3 mouseScreenPosition = Input.mousePosition;
-        Ray ray = _mainCamera.ScreenPointToRay(mouseScreenPosition);
+        Ray ray = _mainCamera.ScreenPointToRay(mousePosition);
         float planeY = transform.position.y;
         float distanceToPlane = (planeY - ray.origin.y) / ray.direction.y;
 
@@ -53,3 +51,11 @@ public class CharacterOrientation : CharacterAbility
         lookDirection = direction;
     }
 }
+public partial class PlayerInputHandler
+{
+    public Vector3 GetMousePosition()
+    {
+        return Input.mousePosition;
+    }
+}
+

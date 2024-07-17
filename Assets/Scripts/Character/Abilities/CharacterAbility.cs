@@ -16,12 +16,12 @@ public abstract class CharacterAbility : MonoBehaviour
     public virtual void OnRespawn() { }
     public virtual void HandleInput() { }
 
-    public virtual void SetAbilityEnabled(bool value)
+    public void SetAbilityEnabled(bool value)
     {
         isEnabled = value;
     }
 
-    public virtual  bool GetAbilityEnabled()
+    public  bool GetAbilityEnabled()
     {
         return isEnabled;
     }

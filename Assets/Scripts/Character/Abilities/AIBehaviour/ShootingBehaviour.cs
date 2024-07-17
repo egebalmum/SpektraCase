@@ -4,16 +4,19 @@ public class ShootingBehaviour : AIBehaviour
 {
     private Weapon _weapon;
     private CharacterOrientation _orientation;
+
+    public override void Initialize(AIController controller)
+    {
+        base.Initialize(controller);
+        _weapon = (Weapon)GetComponent<CharacterHandleHand>().GetHandItem();
+        _orientation = GetComponent<CharacterOrientation>();
+    }
+
     public override void OnEnter()
     {
         if (_weapon == null)
         {
             _weapon = (Weapon)GetComponent<CharacterHandleHand>().GetHandItem();
-        }
-
-        if (_orientation == null)
-        {
-            _orientation = GetComponent<CharacterOrientation>();
         }
         aiController.agent.isStopped = true;
     }

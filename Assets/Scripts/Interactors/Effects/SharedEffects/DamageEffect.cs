@@ -17,27 +17,31 @@ public class DamageEffect : InteractorEffect
         Armor armor = other.gameObject.GetComponent<Armor>();
         Health health = other.gameObject.GetComponent<Health>();
 
+        if (health == null)
+        {
+            return;
+        }
         
         float damageToHealth = damage * armorPenetration;
         float damageToArmor = damage * (1 - armorPenetration);
 
-        if (armor != null && armor.getArmorPoint() > 0)
+        if (armor != null && armor.GetArmorPoint() > 0)
         {
-            if (damageToArmor <= armor.getArmorPoint())
+            if (damageToArmor <= armor.GetArmorPoint())
             {
-                armor.InstantDamage(damageToArmor);
+                armor.ApplyDamageInstant(damageToArmor);
             }
             else
             {
-                float remainingDamage = damageToArmor - armor.getArmorPoint();
-                armor.InstantDamage(armor.getArmorPoint());
-                health.InstantDamage(remainingDamage);
+                float remainingDamage = damageToArmor - armor.GetArmorPoint();
+                armor.ApplyDamageInstant(armor.GetArmorPoint());
+                health.ApplyDamageInstant(remainingDamage);
             }
-            health.InstantDamage(damageToHealth);
+            health.ApplyDamageInstant(damageToHealth);
         }
         else
         {
-            health.InstantDamage(damage);
+            health.ApplyDamageInstant(damage);
         }
     }
 }

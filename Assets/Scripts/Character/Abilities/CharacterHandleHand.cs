@@ -13,7 +13,6 @@ public class CharacterHandleHand : CharacterAbility
     {
         _inventory = GetComponent<Inventory>();
         _inventory.hotbar.OnHotbarEffected += HandItemSwitch;
-
     }
 
     private void HandItemSwitch()
@@ -22,36 +21,45 @@ public class CharacterHandleHand : CharacterAbility
         {
             return;
         }
-        
-        if (_inventory.hotbar.hotbarSlots[_inventory.hotbar.selectedIndex].Item == null)
+
+        GameItem selectedItem = _inventory.hotbar.hotbarSlots[_inventory.hotbar.selectedIndex].Item;
+
+        if (selectedItem == null)
         {
-            if (_onHand != null)
-            {
-                _onHand.SetItemActive(false);
-                _onHand = null;
-            }
+            ClearHand();
         }
         else
         {
-            if (_onHand != null)
-            {
-                _onHand.SetItemActive(false);
-            }
-
-            _inventory.hotbar.hotbarSlots[_inventory.hotbar.selectedIndex].Item.transform.parent = hand;
-            _inventory.hotbar.hotbarSlots[_inventory.hotbar.selectedIndex].Item.transform.localPosition = Vector3.zero;
-            _inventory.hotbar.hotbarSlots[_inventory.hotbar.selectedIndex].Item.transform.localRotation = Quaternion.identity;
-            _inventory.hotbar.hotbarSlots[_inventory.hotbar.selectedIndex].Item.SetItemActive(true);
-            _onHand = _inventory.hotbar.hotbarSlots[_inventory.hotbar.selectedIndex].Item;
+            EquipItemInHand(selectedItem);
         }
     }
 
-    public override void OnDeath()
+    private void ClearHand()
+    {
+        if (_onHand != null)
+        {
+            _onHand.SetItemActive(false);
+            _onHand = null;
+        }
+    }
+
+    private void EquipItemInHand(GameItem item)
     {
         if (_onHand != null)
         {
             _onHand.SetItemActive(false);
         }
+
+        item.transform.parent = hand;
+        item.transform.localPosition = Vector3.zero;
+        item.transform.localRotation = Quaternion.identity;
+        item.SetItemActive(true);
+        _onHand = item;
+    }
+
+    public override void OnDeath()
+    {
+        ClearHand();
     }
 
     public override void OnRespawn()

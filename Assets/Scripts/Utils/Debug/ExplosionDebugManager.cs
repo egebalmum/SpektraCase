@@ -25,7 +25,6 @@ public class ExplosionDebugManager : MonoBehaviour
         {
             foreach (var explosion in _explosions)
             {
-                // Draw a wireframe sphere with a more visually appealing look
                 Gizmos.color = explosion.Color;
                 DrawWireframeSphere(explosion.Position, explosion.Radius);
             }
