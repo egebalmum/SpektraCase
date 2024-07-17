@@ -59,7 +59,10 @@ public class CharacterHandleHand : CharacterAbility
 
     public override void OnDeath()
     {
-        ClearHand();
+        if (_onHand != null)
+        {
+            _onHand.SetItemActive(false);
+        }
     }
 
     public override void OnRespawn()
