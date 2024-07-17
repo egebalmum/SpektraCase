@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CharacterCenter : MonoBehaviour
 {
-    public string characterName;
+    [HideInInspector] public string characterName;
     private List<CharacterAbility> _abilities;
     public Action<CharacterCenter> OnCharacterDeath;
     [SerializeField] private GameObject characterVisuals;

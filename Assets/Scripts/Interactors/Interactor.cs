@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
-    public CharacterCenter owner;
+    [HideInInspector] public CharacterCenter owner;
     
     public virtual void DestroyInteractor() { }
     public virtual void ResetInteractor() { }

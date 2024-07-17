@@ -95,8 +95,8 @@ GameObject:
   - component: {fileID: 78192723569841139}
   - component: {fileID: 2946897212220677250}
   - component: {fileID: 6276293717590608739}
-  - component: {fileID: 3278518476581040112}
   - component: {fileID: 2420577700705198756}
+  - component: {fileID: 3278518476581040112}
   - component: {fileID: 4716778889023946713}
   - component: {fileID: 2966557781298206166}
   - component: {fileID: 5478279704982243251}
@@ -206,6 +206,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &2420577700705198756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357644795015227917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e11b631bea5704dafa8b565a00341b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: 
+  characterVisuals: {fileID: 6756807715774853119}
 --- !u!114 &3278518476581040112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,20 +236,6 @@ MonoBehaviour:
     hotbarSlots: []
     selectedIndex: 0
     hotbarSize: 5
---- !u!114 &2420577700705198756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1357644795015227917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4e11b631bea5704dafa8b565a00341b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: Player
-  characterVisuals: {fileID: 6756807715774853119}
 --- !u!114 &4716778889023946713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +262,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startArmorPoint: 100
-  _currentArmor: 0
 --- !u!114 &5478279704982243251
 MonoBehaviour:
   m_ObjectHideFlags: 0

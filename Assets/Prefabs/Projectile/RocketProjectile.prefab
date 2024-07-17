@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5618bab37a5e506499d5cff70b3a95a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   coldHitAllowed: 1
   hotHitAllowed: 1
 --- !u!114 &3931250095546005757
@@ -110,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c6467a58613d146a6f1ee8ac35d207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextPhase: {fileID: 3932076435697729845, guid: 77ae477661fcbaf40bbd145ad2abbfa2, type: 3}
+  interactor: {fileID: 3932076435697729845, guid: 77ae477661fcbaf40bbd145ad2abbfa2, type: 3}
 --- !u!1 &6710649599851497462
 GameObject:
   m_ObjectHideFlags: 0

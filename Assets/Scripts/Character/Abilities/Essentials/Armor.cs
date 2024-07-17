@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 public class Armor : CharacterAbility
 {
     [SerializeField] private float startArmorPoint = 100;
-    [SerializeField] private float _currentArmor;
+    private float _currentArmor;
     public override void Initialize()
     {
         _currentArmor = startArmorPoint;

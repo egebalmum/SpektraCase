@@ -21,11 +21,26 @@ public class Weapon : GameItem
     {
         projectile = Instantiate(projectile, Vector3.zero, Quaternion.identity);
         projectile.gameObject.SetActive(false);
+        InstantiateChildInteractors(projectile);
         weaponUpgrades = new List<WeaponUpgrade>();
         owner = _owner;
         firingModes = GetComponents<IFiringMode>().ToList();
         SetFiringMode(firingModes[0]);
         owner.OnCharacterDeath += RemoveUpgrades;
+    }
+    
+    private void InstantiateChildInteractors(Interactor interactor)
+    {
+        InteractorSpawnEffect[] spawnEffects = interactor.GetComponents<InteractorSpawnEffect>();
+        if (spawnEffects != null)
+        {
+            foreach (var spawnEffect in spawnEffects)
+            {
+                InstantiateChildInteractors(spawnEffect.interactor);
+                spawnEffect.interactor = Instantiate(spawnEffect.interactor, Vector3.zero, Quaternion.identity);
+                spawnEffect.interactor.gameObject.SetActive(false);
+            }
+        }
     }
 
     void Update()

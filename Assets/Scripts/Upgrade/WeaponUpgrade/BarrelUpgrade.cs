@@ -23,12 +23,12 @@ public class BarrelUpgrade : WeaponUpgrade
     }
     private void HandleInteractor(Interactor interactor)
     {
-        SpawnerEffect[] spawnEffects = interactor.GetComponents<SpawnerEffect>();
+        InteractorSpawnEffect[] spawnEffects = interactor.GetComponents<InteractorSpawnEffect>();
         if (spawnEffects != null)
         {
             foreach (var spawnEffect in spawnEffects)
             {
-                HandleInteractor(spawnEffect.nextPhase); 
+                HandleInteractor(spawnEffect.interactor); 
             }
         }
         DamageEffect effect = interactor.GetComponent<DamageEffect>();
