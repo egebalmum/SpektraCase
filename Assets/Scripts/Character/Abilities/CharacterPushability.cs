@@ -1,24 +1,32 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CharacterPushability : CharacterAbility
 {
     public float pushForceDecay = 5.0f;
     private CharacterController _characterController;
+    private NavMeshAgent _aiController;
     private Vector3 pushForce;
 
     public override void Initialize()
     {
-        if (_characterController == null)
-        {
-            _characterController = GetComponent<CharacterController>();
-        }
+        _characterController = GetComponent<CharacterController>();
+        _aiController = GetComponent<NavMeshAgent>();
     }
     
     public override void Tick()
     {
         if (pushForce.magnitude > 0.1f)
         {
-            _characterController.Move(pushForce * Time.deltaTime);
+            if (_characterController != null)
+            {
+                _characterController.Move(pushForce * Time.deltaTime);
+            }
+            else if (_aiController != null)
+            {
+                _aiController.Move(pushForce* Time.deltaTime);
+            }
+            
             pushForce = Vector3.Lerp(pushForce, Vector3.zero, pushForceDecay * Time.deltaTime);
         }
     }

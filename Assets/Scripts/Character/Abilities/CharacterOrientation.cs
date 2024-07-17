@@ -7,14 +7,10 @@ public class CharacterOrientation : CharacterAbility
     
     [HideInInspector]
     public Vector3 lookDirection;
-    
     private Camera _mainCamera;
     public override void Initialize()
     {
-        if (_mainCamera == null)
-        {
-            _mainCamera = Camera.main;
-        }
+        _mainCamera = Camera.main;
     }
 
     public override void EarlyTick()
@@ -38,13 +34,16 @@ public class CharacterOrientation : CharacterAbility
     {
         Vector3 mouseScreenPosition = Input.mousePosition;
         Ray ray = _mainCamera.ScreenPointToRay(mouseScreenPosition);
-        RaycastHit hit;
-        
-        if (Physics.Raycast(ray, out hit))
+        float planeY = transform.position.y;
+        float distanceToPlane = (planeY - ray.origin.y) / ray.direction.y;
+    
+        if (distanceToPlane > 0)
         {
-            Vector3 direction = hit.point - transform.position;
-            direction.y = 0;
+            Vector3 hitPoint = ray.origin + ray.direction * distanceToPlane;
+            Vector3 direction = hitPoint - transform.position;
+            direction.y = 0; // Ensure the direction is horizontal
             lookDirection = direction;
         }
     }
+
 }
