@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class CharacterCenter : MonoBehaviour
 {
@@ -17,7 +15,6 @@ public class CharacterCenter : MonoBehaviour
         FindAbilities();
         AbilityInitializes();
     }
-
     
     void Update()
     {

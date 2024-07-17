@@ -13,9 +13,13 @@ public class CharacterMovement : CharacterAbility
     private CharacterController _characterController;
     private float _defaultMovementSpeed;
     private MovementIndicator _indicator;
+    private bool _isPlayerControlled;
+    private float horizontalMovement;
+    private float verticalMovement;
 
     public override void Initialize()
     {
+        _isPlayerControlled = GetComponent<CharacterCenter>().characterName.Equals(LevelManager.instance.mainPlayerName);
         _characterController = GetComponent<CharacterController>();
         _defaultMovementSpeed = movementSpeed;
         _indicator = GetComponentInChildren<MovementIndicator>();
@@ -29,8 +33,7 @@ public class CharacterMovement : CharacterAbility
 
     public override void Tick()
     {
-        float horizontalMovement = Input.GetAxisRaw("Horizontal");
-        float verticalMovement = Input.GetAxisRaw("Vertical");
+        HandleInput();
         moveDirection = new Vector3(horizontalMovement, 0, verticalMovement).normalized;
         if (moveDirection != Vector3.zero) 
         { 
@@ -60,5 +63,15 @@ public class CharacterMovement : CharacterAbility
     public void ResetMovementSpeed()
     {
         movementSpeed = _defaultMovementSpeed;
+    }
+
+    public override void HandleInput()
+    {
+        if (!_isPlayerControlled)
+        {
+            return;
+        }
+        horizontalMovement = Input.GetAxisRaw("Horizontal");
+        verticalMovement = Input.GetAxisRaw("Vertical");
     }
 }

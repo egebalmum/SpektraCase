@@ -1,14 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
-using Unity.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Armor : CharacterAbility
 {
     [SerializeField] private float startArmorPoint = 100;
-    private float _currentArmor;
+    [SerializeField] private float _currentArmor;
     public override void Initialize()
     {
         _currentArmor = startArmorPoint;

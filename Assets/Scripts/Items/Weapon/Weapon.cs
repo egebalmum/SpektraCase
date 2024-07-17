@@ -16,6 +16,7 @@ public class Weapon : GameItem
     [SerializeField] private GameObject visuals;
     private IFiringMode _currentFiringMode;
     private bool _isTriggerReady = true;
+    private bool _isPlayerControlled;
 
     public override void Initialize(CharacterCenter _owner)
     {
@@ -24,6 +25,7 @@ public class Weapon : GameItem
         InstantiateChildInteractors(projectile);
         weaponUpgrades = new List<WeaponUpgrade>();
         owner = _owner;
+        _isPlayerControlled = owner.characterName.Equals(LevelManager.instance.mainPlayerName);
         firingModes = GetComponents<IFiringMode>().ToList();
         SetFiringMode(firingModes[0]);
         owner.OnCharacterDeath += RemoveUpgrades;
@@ -49,16 +51,41 @@ public class Weapon : GameItem
         {
             return;
         }
+
+        if (!_isPlayerControlled)
+        {
+            return;
+        }
         if (_isTriggerReady && Input.GetKeyDown(KeyCode.C))
         {
             ChangeFiringMode();
         }
         
-        if (_currentFiringMode != null && _currentFiringMode.CheckInput() && _isTriggerReady)
+        if (_currentFiringMode != null && _currentFiringMode.CheckInput())
         {
-            _currentFiringMode.Fire(fireRate, TriggerWeapon, SetTriggerReady);
-            SetTriggerReady(false);
+            TryShoot();
         }
+    }
+
+    public void TryShoot()
+    {
+        if (!isActive)
+        {
+            return;
+        }
+        if (_isTriggerReady)
+        {
+            Shoot();
+        }
+        else
+        {
+            //try to shoot
+        }
+    }
+    private void Shoot()
+    {
+        _currentFiringMode.Fire(fireRate, TriggerWeapon, SetTriggerReady);
+        SetTriggerReady(false);
     }
 
     public void ChangeFiringMode()

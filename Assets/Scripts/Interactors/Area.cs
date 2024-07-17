@@ -95,7 +95,9 @@ public class Area : Interactor
     
     private void DestroyImmediate()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, areaRadius, areaLayerMask);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, areaRadius, areaLayerMask)
+            .Where(collider => (collider.excludeLayers.value & (1 << gameObject.layer)) == 0)
+            .ToArray();
         _insideColliders.AddRange(hitColliders);
         DestroyInteractor();
     }

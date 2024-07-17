@@ -10,7 +10,8 @@ public class Inventory : MonoBehaviour
     public void Start()
     {
         _owner = GetComponent<CharacterCenter>();
-        hotbar.Initialize();
+        bool isPlayerControlled = GetComponent<CharacterCenter>().characterName.Equals(LevelManager.instance.mainPlayerName);
+        hotbar.Initialize(isPlayerControlled);
     }
 
     public void Update()

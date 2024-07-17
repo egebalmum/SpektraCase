@@ -9,9 +9,11 @@ public class Hotbar
     public int selectedIndex = 0;
     [SerializeField] private int hotbarSize = 5;
     public event Action OnHotbarEffected;
+    private bool _isPlayerControlled;
 
-    public void Initialize()
+    public void Initialize(bool isPlayerControlled)
     {
+        _isPlayerControlled = isPlayerControlled;
         InitializeSlots(hotbarSize); 
     }
 
@@ -31,6 +33,10 @@ public class Hotbar
 
     private void HandleInput()
     {
+        if (!_isPlayerControlled)
+        {
+            return;
+        }
         for (int i = 0; i < hotbarSlots.Length; i++)
         {
             if (Input.GetKeyDown((KeyCode)('1' + i)))

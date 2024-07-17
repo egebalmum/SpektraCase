@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class CharacterAbility : MonoBehaviour
 {
-    private bool _isEnabled = true;
+    [SerializeField] private bool isEnabled = true;
 
     public virtual void Initialize() { }
     public virtual void EarlyTick() { }
@@ -14,14 +14,15 @@ public abstract class CharacterAbility : MonoBehaviour
     public virtual void ResetAbility() { }
     public virtual void OnDeath() { }
     public virtual void OnRespawn() { }
+    public virtual void HandleInput() { }
 
     public virtual void SetAbilityEnabled(bool value)
     {
-        _isEnabled = value;
+        isEnabled = value;
     }
 
     public virtual  bool GetAbilityEnabled()
     {
-        return _isEnabled;
+        return isEnabled;
     }
 }

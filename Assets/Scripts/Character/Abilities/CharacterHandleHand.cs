@@ -16,21 +16,6 @@ public class CharacterHandleHand : CharacterAbility
 
     }
 
-    public override void EarlyTick()
-    {
-        
-    }
-
-    public override void Tick()
-    {
-        
-    }
-
-    public override void LateTick()
-    {
-        
-    }
-
     private void HandItemSwitch()
     {
         if (!GetAbilityEnabled())

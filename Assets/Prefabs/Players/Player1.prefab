@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e11b631bea5704dafa8b565a00341b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: asdasdsadasdasd
   characterVisuals: {fileID: 6756807715774853119}
 --- !u!114 &3278518476581040112
 MonoBehaviour:
@@ -248,7 +248,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e938823eca4b29e468c6ea254d4e4f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   startHealthPoint: 100
+  _currentHealth: 0
 --- !u!114 &2966557781298206166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9322c0f158c3b0141a94ed1e3f3a863c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   startArmorPoint: 100
+  _currentArmor: 0
 --- !u!114 &5478279704982243251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77088a40689b8d341bd0942e7fe42acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   movementSpeed: 10
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &2364018908671644294
@@ -288,6 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc359f43078325042ac887f084cd0a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   lookDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &7439998556247352128
 MonoBehaviour:
@@ -301,6 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58d2b99142572b4793b8b4c2cfb2ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   pushForceDecay: 25
 --- !u!114 &8603144621204407355
 MonoBehaviour:
@@ -314,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04992f3a397bf2428545a7ceda0132f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   hand: {fileID: 6498309778370652018}
 --- !u!114 &8907695815742759264
 MonoBehaviour:
@@ -327,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52f7c3ed0c310e4d9b334723fcc1d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
 --- !u!1 &1970751629433821358
 GameObject:
   m_ObjectHideFlags: 0

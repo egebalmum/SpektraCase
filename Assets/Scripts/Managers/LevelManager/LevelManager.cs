@@ -12,12 +12,22 @@ public class LevelManager : MonoBehaviour
     public CinemachineVirtualCamera mainPlayerCamera;
     public CharacterLifeCycle[] characterLifeCycles;
     public float respawnTime = 3f;
-    
+    public static LevelManager instance;
     public void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         foreach (var characterLifeCycle in characterLifeCycles)
         {
            characterLifeCycle.character = Instantiate(characterLifeCycle.character, characterLifeCycle.spawnPoint.position, Quaternion.identity);
+           characterLifeCycle.character.name = characterLifeCycle.spawnPoint.name;
+           characterLifeCycle.character.characterName = characterLifeCycle.spawnPoint.name;
            CharacterController characteController = characterLifeCycle.character.GetComponent<CharacterController>();
            NavMeshAgent aiController = characterLifeCycle.character.GetComponent<NavMeshAgent>();
            float offsetY = 0;
@@ -30,7 +40,6 @@ public class LevelManager : MonoBehaviour
                offsetY = characterLifeCycle.character.GetComponent<NavMeshAgent>().height / 2;
            }
            characterLifeCycle.character.transform.position += Vector3.up * offsetY;
-           characterLifeCycle.character.name = characterLifeCycle.spawnPoint.name;
            if (characterLifeCycle.character.name == mainPlayerName)
            {
                mainPlayerCamera.Follow = characterLifeCycle.character.transform;

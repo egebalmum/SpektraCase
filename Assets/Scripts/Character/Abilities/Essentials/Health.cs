@@ -1,16 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
-
 public class Health : CharacterAbility
 {
     [SerializeField] private float startHealthPoint = 100;
     private CharacterCenter _character;
-    private float _currentHealth;
+    [SerializeField] private float _currentHealth;
 
     public override void Initialize()
     {
