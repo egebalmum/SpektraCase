@@ -5,8 +5,9 @@ public class Health : CharacterAbility
     private float _currentHealth;
     private CharacterCenter _character;
 
-    public override void Initialize()
+    public override void Initialize(CharacterCenter characterCenter)
     {
+        base.Initialize(characterCenter);
         _character = GetComponent<CharacterCenter>();
         _currentHealth = startHealthPoint;
     }

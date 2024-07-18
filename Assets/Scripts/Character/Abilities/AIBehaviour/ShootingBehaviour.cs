@@ -4,12 +4,14 @@ public class ShootingBehaviour : AIBehaviour
 {
     private Weapon _weapon;
     private CharacterOrientation _orientation;
+    private CharacterMovement _movement;
 
     public override void Initialize(AIController controller)
     {
         base.Initialize(controller);
         _weapon = (Weapon)GetComponent<CharacterHandleHand>().GetHandItem();
         _orientation = GetComponent<CharacterOrientation>();
+        _movement = GetComponent<CharacterMovement>();
     }
 
     public override void OnEnter()
@@ -18,7 +20,7 @@ public class ShootingBehaviour : AIBehaviour
         {
             _weapon = (Weapon)GetComponent<CharacterHandleHand>().GetHandItem();
         }
-        aiController.agent.isStopped = true;
+        _movement.GetAiController().isStopped = true;
     }
 
     public override void Tick()

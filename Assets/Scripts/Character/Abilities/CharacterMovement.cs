@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CharacterMovement : CharacterAbility
 {
@@ -6,19 +7,24 @@ public class CharacterMovement : CharacterAbility
     [HideInInspector]
     public Vector3 moveDirection = Vector3.zero;
     private CharacterController _characterController;
+    private NavMeshAgent _aiController;
     private float _defaultMovementSpeed;
-    private MovementIndicator _indicator;
-    private bool _isPlayerControlled;
     private PlayerInputHandler _inputHandler;
 
-    public override void Initialize()
+    public override void Initialize(CharacterCenter characterCenter)
     {
-        _isPlayerControlled = GetComponent<CharacterCenter>().characterName.Equals(LevelManager.instance.mainPlayerName);
-        _characterController = GetComponent<CharacterController>();
+        base.Initialize(characterCenter);
+        if (characterCenter.isPlayerControlled)
+        {
+            _characterController = GetComponent<CharacterController>();
+        }
+        else
+        {
+            _aiController = GetComponent<NavMeshAgent>();
+        }
         _defaultMovementSpeed = movementSpeed;
-        _indicator = GetComponentInChildren<MovementIndicator>();
 
-        if (_isPlayerControlled)
+        if (characterCenter.isPlayerControlled)
         {
             _inputHandler = new PlayerInputHandler();
         }
@@ -28,7 +34,7 @@ public class CharacterMovement : CharacterAbility
 
     public override void Tick()
     {
-        if (_isPlayerControlled)
+        if (characterCenter.isPlayerControlled)
         {
             Vector2 input = _inputHandler.GetMovementInput();
             moveDirection = new Vector3(input.x, 0, input.y).normalized;
@@ -37,31 +43,76 @@ public class CharacterMovement : CharacterAbility
         if (moveDirection != Vector3.zero) 
         { 
             _characterController.Move(moveDirection * (movementSpeed * Time.deltaTime));
-        }
-    }
-
-    public override void LateTick()
-    {
-        if (moveDirection == Vector3.zero)
-        {
-            _indicator.transform.localScale = Vector3.zero;
+            if (characterCenter.movementState != CharacterMovementState.Running)
+            {
+                characterCenter.SetMovementState(CharacterMovementState.Running);
+            }
         }
         else
         {
-            _indicator.transform.localScale = Vector3.one;
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            _indicator.transform.rotation = targetRotation;
+            if (characterCenter.movementState == CharacterMovementState.Running)
+            {
+                characterCenter.SetMovementState(CharacterMovementState.Idle);
+            }
+        }
+    }
+
+    public CharacterController GetCharacterController()
+    {
+        return _characterController;
+    }
+
+    public NavMeshAgent GetAiController()
+    {
+        return _aiController;
+    }
+    public override void OnDeath()
+    {
+        if (characterCenter.isPlayerControlled)
+        {
+            _characterController.enabled = false;
+        }
+        else
+        {
+            _aiController.enabled = false;
+        }
+    }
+
+    public override void OnRespawn()
+    {
+        if (characterCenter.isPlayerControlled)
+        {
+            _characterController.enabled = true;
+        }
+        else
+        {
+            _aiController.enabled = true;
+            _aiController.ResetPath();
         }
     }
 
     public void AdjustMovementSpeed(float newSpeed)
     {
-        movementSpeed = newSpeed;
+        if (characterCenter.isPlayerControlled)
+        {
+            movementSpeed = newSpeed;
+        }
+        else
+        {
+            _aiController.speed = newSpeed;
+        }
     }
     
     public void ResetMovementSpeed()
     {
-        movementSpeed = _defaultMovementSpeed;
+        if (characterCenter.isPlayerControlled)
+        {
+            movementSpeed = _defaultMovementSpeed;
+        }
+        else
+        {
+            _aiController.speed = _defaultMovementSpeed;
+        }
     }
 }
 public partial class PlayerInputHandler

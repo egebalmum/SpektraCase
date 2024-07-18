@@ -52,6 +52,7 @@ public class LevelManager : MonoBehaviour
         if (characterLifeCycle.character.name == mainPlayerName)
         {
             mainPlayerCamera.Follow = characterLifeCycle.character.transform;
+            characterLifeCycle.character.isPlayerControlled = true;
         }
 
         characterLifeCycle.character.OnCharacterDeath += HandleDeath;

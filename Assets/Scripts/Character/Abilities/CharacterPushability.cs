@@ -8,8 +8,9 @@ public class CharacterPushability : CharacterAbility
     private NavMeshAgent _aiController;
     private Vector3 pushForce;
 
-    public override void Initialize()
+    public override void Initialize(CharacterCenter characterCenter)
     {
+        base.Initialize(characterCenter);
         _characterController = GetComponent<CharacterController>();
         _aiController = GetComponent<NavMeshAgent>();
     }

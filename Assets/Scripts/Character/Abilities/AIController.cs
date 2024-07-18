@@ -9,7 +9,6 @@ public class AIController : CharacterAbility
     [HideInInspector] public Transform player;
     public float chaseDistance = 10f;
     public float shootDistance = 5f;
-    [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public PatrollingBehaviour patrollingBehaviour;
     [HideInInspector] public ChasingBehaviour chasingBehaviour;
     [HideInInspector] public ShootingBehaviour shootingBehaviour;
@@ -17,8 +16,6 @@ public class AIController : CharacterAbility
     void Start()
     {
         player = FindObjectsOfType<CharacterCenter>().First(character => character.name.Equals(targetName)).transform;
-        agent = GetComponent<NavMeshAgent>();
-        
         InitializeBehaviour(ref patrollingBehaviour);
         InitializeBehaviour(ref chasingBehaviour);
         InitializeBehaviour(ref shootingBehaviour);
@@ -63,14 +60,11 @@ public class AIController : CharacterAbility
 
     public override void OnDeath()
     {
-        agent.enabled = false;
         SetState(null);
     }
 
     public override void OnRespawn()
     {
-        agent.enabled = true;
-        agent.ResetPath();
         SetState(patrollingBehaviour);
     }
 }

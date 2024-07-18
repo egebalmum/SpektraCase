@@ -6,11 +6,13 @@ public class PatrollingBehaviour : AIBehaviour
     [SerializeField] private Transform[] waypoints;
     [HideInInspector] public int currentWaypointIndex = 0;
     private CharacterOrientation _orientation;
+    private CharacterMovement _movement;
 
     public override void Initialize(AIController controller)
     {
         base.Initialize(controller);
         _orientation = GetComponent<CharacterOrientation>();
+        _movement = GetComponent<CharacterMovement>();
         foreach (var waypoint in waypoints)
         {
             waypoint.transform.parent = null;
@@ -20,14 +22,14 @@ public class PatrollingBehaviour : AIBehaviour
 
     public override void OnEnter()
     {
-        aiController.agent.speed = patrolSpeed;
+        _movement.AdjustMovementSpeed(patrolSpeed);
         GoToNextWaypoint();
     }
 
     public override void Tick()
     {
-        _orientation.AimAtPosition(aiController.agent.destination);
-        if (!aiController.agent.pathPending && aiController.agent.remainingDistance < 0.5f)
+        _orientation.AimAtPosition(_movement.GetAiController().destination);
+        if (!_movement.GetAiController().pathPending && _movement.GetAiController().remainingDistance < 0.5f)
         {
             GoToNextWaypoint();
         }
@@ -45,7 +47,7 @@ public class PatrollingBehaviour : AIBehaviour
         if (waypoints.Length == 0)
             return;
 
-        aiController.agent.destination = waypoints[currentWaypointIndex].position;
+        _movement.GetAiController().destination = waypoints[currentWaypointIndex].position;
         currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
     }
 }

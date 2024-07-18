@@ -9,8 +9,9 @@ public class CharacterHandleHand : CharacterAbility
     private Inventory _inventory;
     private GameItem _onHand;
 
-    public override void Initialize()
+    public override void Initialize(CharacterCenter characterCenter)
     {
+        base.Initialize(base.characterCenter);
         _inventory = GetComponent<Inventory>();
         _inventory.hotbar.OnHotbarEffected += HandItemSwitch;
     }

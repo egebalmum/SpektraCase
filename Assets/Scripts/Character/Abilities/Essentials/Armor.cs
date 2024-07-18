@@ -4,8 +4,9 @@ public class Armor : CharacterAbility
 {
     [SerializeField] private float startArmorPoint = 100;
     private float _currentArmor;
-    public override void Initialize()
+    public override void Initialize(CharacterCenter characterCenter)
     {
+        base.Initialize(characterCenter);
         _currentArmor = startArmorPoint;
     }
 

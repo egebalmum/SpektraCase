@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class CharacterCenter : MonoBehaviour
 {
+    public CharacterMovementState movementState = CharacterMovementState.Idle;
+    public CharacterEffectState effectState = CharacterEffectState.Idle;
+    public bool isPlayerControlled = false;
     [SerializeField] private GameObject characterVisuals;
     [HideInInspector] public string characterName;
-    
     private List<CharacterAbility> _abilities;
     public Action<CharacterCenter> OnCharacterDeath;
 
@@ -33,7 +35,7 @@ public class CharacterCenter : MonoBehaviour
     {
         foreach (var ability in _abilities)
         {
-            ability.Initialize();
+            ability.Initialize(this);
         }
     }
 
@@ -100,5 +102,15 @@ public class CharacterCenter : MonoBehaviour
         {
             collider.enabled = enabled;
         }
+    }
+
+    public void SetMovementState(CharacterMovementState newState)
+    {
+        movementState = newState;
+    }
+
+    public void SetEffectState(CharacterEffectState newState)
+    {
+        effectState = newState;
     }
 }

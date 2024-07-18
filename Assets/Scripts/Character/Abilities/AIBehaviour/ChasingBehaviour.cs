@@ -6,17 +6,19 @@ public class ChasingBehaviour : AIBehaviour
     private Vector3 lastKnownPosition;
     private bool isChasingLastKnownPosition = false;
     private CharacterOrientation _orientation;
+    private CharacterMovement _movement;
 
     public override void Initialize(AIController controller)
     {
         base.Initialize(controller);
         _orientation = GetComponent<CharacterOrientation>();
+        _movement = GetComponent<CharacterMovement>();
     }
 
     public override void OnEnter()
     {
-        aiController.agent.speed = chaseSpeed;
-        aiController.agent.isStopped = false;
+        _movement.AdjustMovementSpeed(chaseSpeed);
+        _movement.GetAiController().isStopped = false;
         lastKnownPosition = aiController.player.position;
     }
 
@@ -26,17 +28,17 @@ public class ChasingBehaviour : AIBehaviour
         {
             _orientation.AimAtPosition(aiController.player.position);
             lastKnownPosition = aiController.player.position;
-            aiController.agent.SetDestination(lastKnownPosition);
+            _movement.GetAiController().SetDestination(lastKnownPosition);
             isChasingLastKnownPosition = false;
         }
         else if (!isChasingLastKnownPosition)
         {
             _orientation.AimAtPosition(lastKnownPosition);
             isChasingLastKnownPosition = true;
-            aiController.agent.SetDestination(lastKnownPosition);
+            _movement.GetAiController().SetDestination(lastKnownPosition);
         }
 
-        if (isChasingLastKnownPosition && aiController.agent.remainingDistance < 0.5f)
+        if (isChasingLastKnownPosition && _movement.GetAiController().remainingDistance < 0.5f)
         {
             aiController.SetState(aiController.patrollingBehaviour);
         }

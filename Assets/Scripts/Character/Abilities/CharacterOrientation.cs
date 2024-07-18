@@ -8,8 +8,9 @@ public class CharacterOrientation : CharacterAbility
     private bool _isPlayerControlled;
     private PlayerInputHandler _inputHandler;
 
-    public override void Initialize()
+    public override void Initialize(CharacterCenter characterCenter)
     {
+        base.Initialize(characterCenter);
         _isPlayerControlled = GetComponent<CharacterCenter>().characterName.Equals(LevelManager.instance.mainPlayerName);
         _mainCamera = Camera.main;
 
