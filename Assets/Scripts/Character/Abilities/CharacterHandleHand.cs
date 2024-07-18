@@ -13,7 +13,7 @@ public class CharacterHandleHand : CharacterAbility
     {
         base.Initialize(base.characterCenter);
         _inventory = GetComponent<Inventory>();
-        _inventory.hotbar.OnHotbarEffected += HandItemSwitch;
+        _inventory.hotbar.OnSelectedHotBarEffected += HandItemSwitch;
     }
 
     private void HandItemSwitch()

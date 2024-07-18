@@ -212,14 +212,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb882a74ae006aa4a8be7ece4184a13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 0}
+  image: {fileID: 21300000, guid: 96f3d8a5e8b387947a60ee655c0a7cad, type: 3}
   name: Rifle
   isActive: 0
+  owner: {fileID: 0}
+  weaponUpgrades: []
   range: 100
   speed: 40
   fireRate: 0.1
   firePoint: {fileID: 6009030211290612170}
   projectile: {fileID: 5192167485167254838, guid: 400a0084274d0f1459ec3c982f14c018, type: 3}
+  firingModes: []
   mode: 
   visuals: {fileID: 8129308596838289083}
 --- !u!114 &1492730149661146225
@@ -234,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0280190a2fe32714ab49b38fe3628682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modeName: 
   burstCount: 3
   burstCoolDown: 0.3
 --- !u!1 &7059740211593306797

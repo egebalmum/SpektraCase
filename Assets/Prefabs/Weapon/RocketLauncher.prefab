@@ -46,14 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb882a74ae006aa4a8be7ece4184a13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 0}
+  image: {fileID: 21300000, guid: d29336ecd485de147947a4ce53a16934, type: 3}
   name: RocketLauncher
   isActive: 0
+  owner: {fileID: 0}
+  weaponUpgrades: []
   range: 100
   speed: 40
   fireRate: 2
   firePoint: {fileID: 1796554508071563152}
   projectile: {fileID: 5192167485167254838, guid: a3b95843577108a4a934c845ddf5710d, type: 3}
+  firingModes: []
   mode: 
   visuals: {fileID: 6786432579337655475}
 --- !u!114 &7731628037347841199
@@ -68,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc3658590d202a4084a0b834c8d0416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modeName: 
 --- !u!1 &1994987714159463911
 GameObject:
   m_ObjectHideFlags: 0

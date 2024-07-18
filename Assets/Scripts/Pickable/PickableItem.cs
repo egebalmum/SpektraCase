@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PickableItem : MonoBehaviour
 {
-    [SerializeField] private GameItem item;
+    public GameItem item;
     private Collider _collider;
 
     private void OnTriggerEnter(Collider other)
@@ -31,6 +31,6 @@ public class PickableItem : MonoBehaviour
 
     private void DestroyPickable()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

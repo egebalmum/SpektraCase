@@ -74,7 +74,7 @@ MonoBehaviour:
   areaLayerMask:
     serializedVersion: 2
     m_Bits: 23
-  areaDelay: 0.15
+  areaDelay: 0
   models: {fileID: 0}
 --- !u!114 &5202754379847469231
 MonoBehaviour:

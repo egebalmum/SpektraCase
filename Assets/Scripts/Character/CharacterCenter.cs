@@ -7,8 +7,8 @@ public class CharacterCenter : MonoBehaviour
 {
     public CharacterMovementState movementState = CharacterMovementState.Idle;
     public CharacterEffectState effectState = CharacterEffectState.Idle;
-    public bool isPlayerControlled = false;
-    [SerializeField] private GameObject characterVisuals;
+    [HideInInspector] public bool isPlayerControlled = false;
+    [SerializeField] private GameObject[] characterVisuals;
     [HideInInspector] public string characterName;
     private List<CharacterAbility> _abilities;
     public Action<CharacterCenter> OnCharacterDeath;
@@ -69,14 +69,22 @@ public class CharacterCenter : MonoBehaviour
             ability.OnDeath();
         }
         SetCollidersEnabled(false);
-        characterVisuals.SetActive(false);
+        SetVisuals(false);
+    }
+
+    private void SetVisuals(bool value)
+    {
+        foreach (var visualObject in characterVisuals)
+        {
+            visualObject.SetActive(value);
+        }
     }
 
     public void Respawn()
     {
         movementState = CharacterMovementState.Idle;
         effectState = CharacterEffectState.Idle;
-        characterVisuals.SetActive(true);
+        SetVisuals(true);
         SetCollidersEnabled(true);
         foreach (var ability in _abilities)
         {

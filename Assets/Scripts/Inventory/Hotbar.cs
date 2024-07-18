@@ -7,8 +7,8 @@ public class Hotbar
 {
     public HotbarSlot[] hotbarSlots;
     public int selectedIndex = 0;
-    [SerializeField] private int hotbarSize = 5;
-    public event Action OnHotbarEffected;
+    public int hotbarSize = 5;
+    public Action OnSelectedHotBarEffected; //deleted event
     private bool _isPlayerControlled;
 
     public void Initialize(bool isPlayerControlled)
@@ -53,7 +53,7 @@ public class Hotbar
             return;
         }
         selectedIndex = index;
-        OnHotbarEffected?.Invoke();
+        OnSelectedHotBarEffected?.Invoke();
     }
     
 
@@ -66,7 +66,7 @@ public class Hotbar
         hotbarSlots[slotIndex].AssignItem(item);
         if (selectedIndex == slotIndex)
         {
-            OnHotbarEffected?.Invoke();
+            OnSelectedHotBarEffected?.Invoke();
         }
         
     }

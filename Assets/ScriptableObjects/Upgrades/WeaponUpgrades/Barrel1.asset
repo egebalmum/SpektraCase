@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3110a0e682e92a14f8d27d137c02dfed, type: 3}
   m_Name: Barrel1
   m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: fcd91fb8950b4e44cbc03d675a06b440, type: 3}
   damageMultiplier: 1.5

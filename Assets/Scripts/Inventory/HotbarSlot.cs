@@ -6,6 +6,7 @@ public class HotbarSlot
 {
     public int SlotIndex;
     public GameItem Item;
+    public Action<Sprite> OnHotbarSlotChanged;
 
     public HotbarSlot(int index)
     {
@@ -15,6 +16,7 @@ public class HotbarSlot
     public void AssignItem(GameItem item)
     {
         Item = item;
+        OnHotbarSlotChanged?.Invoke(item.image);
     }
 
     public void ClearSlot()

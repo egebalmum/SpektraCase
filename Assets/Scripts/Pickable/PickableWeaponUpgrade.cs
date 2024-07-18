@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PickableWeaponUpgrade : MonoBehaviour
 {
-    [SerializeField] private WeaponUpgrade upgrade;
+    public WeaponUpgrade upgrade;
     private Collider _collider;
     
     private void OnTriggerEnter(Collider other)
@@ -44,6 +44,6 @@ public class PickableWeaponUpgrade : MonoBehaviour
 
     private void DestroyPickable()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

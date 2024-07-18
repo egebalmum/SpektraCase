@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f471c8e7b6e68b24381c1dbc5f84266f, type: 3}
   m_Name: Scope1
   m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 2fb427769c23bd6449a1a38144550ac7, type: 3}
   scopeMultiplier: 1.5

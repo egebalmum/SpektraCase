@@ -1,9 +1,13 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 public class Health : CharacterAbility
 {
     [SerializeField] private float startHealthPoint = 100;
     private float _currentHealth;
     private CharacterCenter _character;
+
+    public Action<float> OnHealthChange;
 
     public override void Initialize(CharacterCenter characterCenter)
     {
@@ -19,6 +23,7 @@ public class Health : CharacterAbility
             return;
         }
         _currentHealth -= value;
+        OnHealthChange?.Invoke(_currentHealth/startHealthPoint);
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;
@@ -40,6 +45,7 @@ public class Health : CharacterAbility
     public override void ResetAbility()
     {
         _currentHealth = startHealthPoint;
+        OnHealthChange?.Invoke(_currentHealth/startHealthPoint);
     }
 
     public override void OnRespawn()

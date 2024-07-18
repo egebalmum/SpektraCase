@@ -26,6 +26,10 @@ public class CharacterStunability : CharacterAbility
 
     public void StartStun(float time)
     {
+        if (!GetAbilityEnabled())
+        {
+            return;
+        }
         if (_isStunned)
         {
             return;
@@ -34,5 +38,11 @@ public class CharacterStunability : CharacterAbility
         _isStunned = true;
         _remainingTime = time;
         characterCenter.SetEffectState(CharacterEffectState.Stunned);
+    }
+
+    public override void OnDeath()
+    {
+        _isStunned = false;
+        _remainingTime = 0;
     }
 }

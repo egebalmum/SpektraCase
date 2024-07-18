@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Armor : CharacterAbility
 {
     [SerializeField] private float startArmorPoint = 100;
     private float _currentArmor;
+    public Action<float> OnArmorChange;
     public override void Initialize(CharacterCenter characterCenter)
     {
         base.Initialize(characterCenter);
@@ -17,6 +19,11 @@ public class Armor : CharacterAbility
             return;
         }
        _currentArmor -= value;
+       if (_currentArmor < 0)
+       {
+           _currentArmor = 0;
+       }
+       OnArmorChange?.Invoke(_currentArmor/startArmorPoint);
     }
 
     public float GetArmorPoint()
@@ -27,6 +34,7 @@ public class Armor : CharacterAbility
     public override void ResetAbility()
     {
         _currentArmor = startArmorPoint;
+        OnArmorChange?.Invoke(_currentArmor/startArmorPoint);
     }
 
     public override void OnRespawn()
@@ -39,4 +47,5 @@ public class Armor : CharacterAbility
     {
         SetAbilityEnabled(false);
     }
+    
 }
