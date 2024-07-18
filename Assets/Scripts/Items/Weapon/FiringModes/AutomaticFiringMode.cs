@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class AutomaticFiringMode : FiringMode
 {
-    public override string GetModeName()
-    {
-        return modeName;
-    }
 
     public override void Fire(float fireRate, Action shoot, Action setTriggerReady)
     {

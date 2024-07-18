@@ -11,7 +11,7 @@ public class CharacterHandleHand : CharacterAbility
 
     public override void Initialize(CharacterCenter characterCenter)
     {
-        base.Initialize(base.characterCenter);
+        base.Initialize(characterCenter);
         _inventory = GetComponent<Inventory>();
         _inventory.hotbar.OnSelectedHotBarEffected += HandItemSwitch;
     }
@@ -49,6 +49,7 @@ public class CharacterHandleHand : CharacterAbility
         {
             _onHand.SetItemActive(false);
             _onHand = null;
+            characterCenter.animator.SetTrigger("HandDefault");
         }
     }
 
@@ -58,12 +59,12 @@ public class CharacterHandleHand : CharacterAbility
         {
             _onHand.SetItemActive(false);
         }
-
         item.transform.parent = hand;
         item.transform.localPosition = Vector3.zero;
         item.transform.localRotation = Quaternion.identity;
         item.SetItemActive(true);
         _onHand = item;
+        characterCenter.animator.SetTrigger("Hand" + item.type);
     }
 
     public override void OnDeath()
@@ -79,6 +80,7 @@ public class CharacterHandleHand : CharacterAbility
         if (_onHand != null)
         {
             _onHand.SetItemActive(true);
+            characterCenter.animator.SetTrigger("Hand" + _onHand.type);
         }
     }
 

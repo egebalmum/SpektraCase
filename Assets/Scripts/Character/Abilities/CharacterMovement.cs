@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Tilemaps;
 
 public class CharacterMovement : CharacterAbility
 {
@@ -10,10 +11,12 @@ public class CharacterMovement : CharacterAbility
     private NavMeshAgent _aiController;
     private float _defaultMovementSpeed;
     private PlayerInputHandler _inputHandler;
+    private CharacterOrientation _orientation;
 
     public override void Initialize(CharacterCenter characterCenter)
     {
         base.Initialize(characterCenter);
+        _orientation = GetComponent<CharacterOrientation>();
         if (characterCenter.isPlayerControlled)
         {
             _characterController = GetComponent<CharacterController>();
@@ -43,11 +46,13 @@ public class CharacterMovement : CharacterAbility
                 if (characterCenter.movementState != CharacterMovementState.Running)
                 {
                     characterCenter.SetMovementState(CharacterMovementState.Running);
+                    characterCenter.animator.SetBool("isRunning", true);
                 }
             }
             else if (characterCenter.movementState == CharacterMovementState.Running)
             {
                 characterCenter.SetMovementState(CharacterMovementState.Idle);
+                characterCenter.animator.SetBool("isRunning", false);
             }
         }
         else
@@ -57,12 +62,17 @@ public class CharacterMovement : CharacterAbility
             if (moveDirection != Vector3.zero && characterCenter.movementState != CharacterMovementState.Running)
             {
                 characterCenter.SetMovementState(CharacterMovementState.Running);
+                characterCenter.animator.SetBool("isRunning", true);
             }
             else if (moveDirection == Vector3.zero && characterCenter.movementState == CharacterMovementState.Running)
             {
                 characterCenter.SetMovementState(CharacterMovementState.Idle);
+                characterCenter.animator.SetBool("isRunning", false);
             }
         }
+        var animDirection = Quaternion.Inverse(Quaternion.LookRotation(_orientation.lookDirection)) * moveDirection;
+        characterCenter.animator.SetFloat("moveX", animDirection.x);
+        characterCenter.animator.SetFloat("moveY", animDirection.z);
 
     }
 

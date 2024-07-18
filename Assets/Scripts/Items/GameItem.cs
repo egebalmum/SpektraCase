@@ -2,11 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [Serializable]
+
+public enum GameItemType
+{
+    Default,
+    WeaponSingle,
+    WeaponDouble,
+    WeaponShoulder
+}
 public class GameItem : MonoBehaviour
 {
+    public GameItemType type;
     public Sprite image;
-    public string name;
+    public string itemName;
     public bool isActive;
     [HideInInspector] public CharacterCenter owner;
     public virtual void SetItemActive(bool value)

@@ -12,9 +12,11 @@ public class CharacterCenter : MonoBehaviour
     [HideInInspector] public string characterName;
     private List<CharacterAbility> _abilities;
     public Action<CharacterCenter> OnCharacterDeath;
+    [HideInInspector] public Animator animator;
 
     void Start()
     {
+        SetAnimator();
         FindAbilities();
         InitializeAbilities();
     }
@@ -23,6 +25,11 @@ public class CharacterCenter : MonoBehaviour
     {
         ProcessAbilitiesTicks();
         ProcessAbilitiesLateTicks();
+    }
+
+    private void SetAnimator()
+    {
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void FindAbilities()
@@ -82,8 +89,8 @@ public class CharacterCenter : MonoBehaviour
 
     public void Respawn()
     {
-        movementState = CharacterMovementState.Idle;
-        effectState = CharacterEffectState.Idle;
+        SetMovementState(CharacterMovementState.Idle);
+        SetEffectState(CharacterEffectState.Idle);
         SetVisuals(true);
         SetCollidersEnabled(true);
         foreach (var ability in _abilities)

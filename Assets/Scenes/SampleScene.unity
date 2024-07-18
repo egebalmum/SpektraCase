@@ -9058,7 +9058,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 15
+  m_CameraDistance: 11
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -12126,7 +12126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 153.31, y: -61.3}
+  m_AnchoredPosition: {x: 153.31006, y: -61.30005}
   m_SizeDelta: {x: 307.63, y: 117.09421}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1710279824

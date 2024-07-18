@@ -5,12 +5,7 @@ public class BurstFiringMode : FiringMode
 {
     public int burstCount = 3;
     public float burstCoolDown = 0.3f;
-
-    public override string GetModeName()
-    {
-        return modeName;
-    }
-
+    
     public override void Fire(float fireRate, System.Action shoot, System.Action setTriggerReady)
     {
         StartCoroutine(FireCoroutine(fireRate, shoot, setTriggerReady));

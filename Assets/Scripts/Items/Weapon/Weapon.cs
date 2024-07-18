@@ -11,7 +11,7 @@ public class Weapon : GameItem
     public float fireRate;
     public Transform firePoint;
     public Projectile projectile;
-    public List<FiringMode> firingModes;
+    [HideInInspector] public List<FiringMode> firingModes;
     public String mode;
     [SerializeField] private GameObject visuals;
     
