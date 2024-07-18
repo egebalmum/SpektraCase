@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3932076435697729845}
   - component: {fileID: 5202754379847469231}
   - component: {fileID: 1788189241019394787}
+  - component: {fileID: 7749433349600095556}
   m_Layer: 6
   m_Name: Explosive
   m_TagString: Untagged
@@ -73,7 +74,7 @@ MonoBehaviour:
   areaLayerMask:
     serializedVersion: 2
     m_Bits: 23
-  areaDelay: 0
+  areaDelay: 0.15
   models: {fileID: 0}
 --- !u!114 &5202754379847469231
 MonoBehaviour:
@@ -102,3 +103,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 54.5
+--- !u!114 &7749433349600095556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481195401113074539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687813e87539a8a4aa05f4148b8aec9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0.3

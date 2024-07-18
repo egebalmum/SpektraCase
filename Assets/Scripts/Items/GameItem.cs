@@ -5,6 +5,7 @@ using UnityEngine;
 [Serializable]
 public class GameItem : MonoBehaviour
 {
+    public Sprite image;
     public string name;
     public bool isActive;
     [HideInInspector] public CharacterCenter owner;
@@ -12,6 +13,8 @@ public class GameItem : MonoBehaviour
     {
         isActive = value;
     }
+
+    public virtual void Tick() { }
     public virtual void HoldItem() { }
     public virtual void ReleaseItem() { }
 

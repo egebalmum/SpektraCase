@@ -46,7 +46,7 @@ public class Weapon : GameItem
         }
     }
 
-    void Update()
+    public override void Tick()
     {
         if (!isActive)
         {

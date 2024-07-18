@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class WeaponUpgrade : ScriptableObject
 {
+    public Sprite image;
     public abstract void AddUpgrade(Weapon weapon);
 
     public abstract void RemoveUpgrade(Weapon weapon);

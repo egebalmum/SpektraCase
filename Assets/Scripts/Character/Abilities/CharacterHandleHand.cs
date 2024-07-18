@@ -35,6 +35,14 @@ public class CharacterHandleHand : CharacterAbility
         }
     }
 
+    public override void Tick()
+    {
+        if (_onHand != null && _onHand.isActive)
+        {
+            _onHand.Tick();
+        }
+    }
+
     private void ClearHand()
     {
         if (_onHand != null)

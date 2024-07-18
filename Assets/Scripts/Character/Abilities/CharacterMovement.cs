@@ -30,31 +30,40 @@ public class CharacterMovement : CharacterAbility
         }
     }
 
-    public override void EarlyTick() { }
-
     public override void Tick()
     {
         if (characterCenter.isPlayerControlled)
         {
             Vector2 input = _inputHandler.GetMovementInput();
             moveDirection = new Vector3(input.x, 0, input.y).normalized;
-        }
-        
-        if (moveDirection != Vector3.zero) 
-        { 
-            _characterController.Move(moveDirection * (movementSpeed * Time.deltaTime));
-            if (characterCenter.movementState != CharacterMovementState.Running)
+
+            if (moveDirection != Vector3.zero)
             {
-                characterCenter.SetMovementState(CharacterMovementState.Running);
+                _characterController.Move(moveDirection * (movementSpeed * Time.deltaTime));
+                if (characterCenter.movementState != CharacterMovementState.Running)
+                {
+                    characterCenter.SetMovementState(CharacterMovementState.Running);
+                }
             }
-        }
-        else
-        {
-            if (characterCenter.movementState == CharacterMovementState.Running)
+            else if (characterCenter.movementState == CharacterMovementState.Running)
             {
                 characterCenter.SetMovementState(CharacterMovementState.Idle);
             }
         }
+        else
+        {
+            moveDirection = _aiController.velocity.normalized;
+
+            if (moveDirection != Vector3.zero && characterCenter.movementState != CharacterMovementState.Running)
+            {
+                characterCenter.SetMovementState(CharacterMovementState.Running);
+            }
+            else if (moveDirection == Vector3.zero && characterCenter.movementState == CharacterMovementState.Running)
+            {
+                characterCenter.SetMovementState(CharacterMovementState.Idle);
+            }
+        }
+
     }
 
     public CharacterController GetCharacterController()

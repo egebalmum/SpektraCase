@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 9017461922624454689}
   - component: {fileID: 6622252633621342138}
   - component: {fileID: 6303397379987064427}
+  - component: {fileID: 7469807743237485365}
   - component: {fileID: 2021438818581718391}
   - component: {fileID: 5329439522960954765}
   - component: {fileID: 2006605270381810959}
@@ -250,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementState: 0
   effectState: 0
+  isPlayerControlled: 0
   characterVisuals: {fileID: 2595705876967712028}
   characterName: 
 --- !u!114 &1138231983133657824
@@ -265,7 +267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
-  characterCenter: {fileID: 0}
   startHealthPoint: 100
 --- !u!114 &170685229720413285
 MonoBehaviour:
@@ -280,7 +281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
-  characterCenter: {fileID: 0}
   startArmorPoint: 100
 --- !u!114 &827526776637594687
 MonoBehaviour:
@@ -295,7 +295,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
-  characterCenter: {fileID: 0}
   movementSpeed: 10
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &9017461922624454689
@@ -311,7 +310,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
-  characterCenter: {fileID: 0}
   lookDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &6622252633621342138
 MonoBehaviour:
@@ -326,7 +324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
-  characterCenter: {fileID: 0}
   pushForceDecay: 25
 --- !u!114 &6303397379987064427
 MonoBehaviour:
@@ -341,8 +338,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
-  characterCenter: {fileID: 0}
   hand: {fileID: 7845102386119421331}
+--- !u!114 &7469807743237485365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4202072236442646628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75f0064758d8d54283949f9d400a464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnabled: 1
 --- !u!114 &2021438818581718391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,13 +365,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
-  characterCenter: {fileID: 0}
   currentBehaviour: {fileID: 0}
   targetName: Player1
   player: {fileID: 0}
   chaseDistance: 14
   shootDistance: 11
-  agent: {fileID: 0}
   patrollingBehaviour: {fileID: 0}
   chasingBehaviour: {fileID: 0}
   shootingBehaviour: {fileID: 0}

@@ -33,6 +33,7 @@ public class Health : CharacterAbility
 
     private void Death()
     {
+        _character.effectState = CharacterEffectState.Death;
         _character.Death();
     }
 

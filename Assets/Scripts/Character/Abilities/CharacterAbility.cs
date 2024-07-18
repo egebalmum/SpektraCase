@@ -5,6 +5,8 @@ using UnityEngine;
 
 public abstract class CharacterAbility : MonoBehaviour
 {
+    public List<CharacterMovementState> blockedMoveStates;
+    public List<CharacterEffectState> blockedEffectStates;
     [SerializeField] private bool isEnabled = true;
     protected CharacterCenter characterCenter;
 
@@ -12,7 +14,6 @@ public abstract class CharacterAbility : MonoBehaviour
     {
         this.characterCenter = characterCenter;
     }
-    public virtual void EarlyTick() { }
     public virtual void Tick() { }
     public virtual void LateTick() { }
     public virtual void ResetAbility() { }

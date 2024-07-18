@@ -21,7 +21,6 @@ public class CharacterCenter : MonoBehaviour
 
     void Update()
     {
-        ProcessAbilitiesEarlyTicks();
         ProcessAbilitiesTicks();
         ProcessAbilitiesLateTicks();
     }
@@ -39,22 +38,11 @@ public class CharacterCenter : MonoBehaviour
         }
     }
 
-    private void ProcessAbilitiesEarlyTicks()
-    {
-        foreach (var ability in _abilities)
-        {
-            if (ability.GetAbilityEnabled())
-            {
-                ability.EarlyTick();
-            }
-        }
-    }
-
     private void ProcessAbilitiesTicks()
     {
         foreach (var ability in _abilities)
         {
-            if (ability.GetAbilityEnabled())
+            if (ability.GetAbilityEnabled() && !ability.blockedMoveStates.Contains(movementState) && !ability.blockedEffectStates.Contains(effectState))
             {
                 ability.Tick();
             }
@@ -65,7 +53,7 @@ public class CharacterCenter : MonoBehaviour
     {
         foreach (var ability in _abilities)
         {
-            if (ability.GetAbilityEnabled())
+            if (ability.GetAbilityEnabled() && !ability.blockedMoveStates.Contains(movementState) && !ability.blockedEffectStates.Contains(effectState))
             {
                 ability.LateTick();
             }
@@ -86,6 +74,8 @@ public class CharacterCenter : MonoBehaviour
 
     public void Respawn()
     {
+        movementState = CharacterMovementState.Idle;
+        effectState = CharacterEffectState.Idle;
         characterVisuals.SetActive(true);
         SetCollidersEnabled(true);
         foreach (var ability in _abilities)
