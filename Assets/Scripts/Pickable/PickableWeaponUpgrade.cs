@@ -41,9 +41,11 @@ public class PickableWeaponUpgrade : MonoBehaviour
         weapon.AddUpgrade(upgrade);
         DestroyPickable();
     }
-
+    
     private void DestroyPickable()
     {
         gameObject.SetActive(false);
     }
+    
+
 }

@@ -60,7 +60,7 @@ public class CharacterHandleHand : CharacterAbility
             _onHand.SetItemActive(false);
         }
         item.transform.parent = hand;
-        item.transform.localPosition = Vector3.zero;
+        item.transform.localPosition = item.onHandPosition;
         item.transform.localRotation = Quaternion.identity;
         item.SetItemActive(true);
         _onHand = item;

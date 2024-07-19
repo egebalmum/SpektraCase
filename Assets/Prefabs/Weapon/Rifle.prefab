@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb882a74ae006aa4a8be7ece4184a13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHandPosition: {x: -0.45, y: 0.367, z: 0}
   type: 2
   image: {fileID: 21300000, guid: 96f3d8a5e8b387947a60ee655c0a7cad, type: 3}
   itemName: Rifle

@@ -52,12 +52,13 @@ MonoBehaviour:
   itemName: Pistol
   isActive: 0
   owner: {fileID: 0}
+  onHandPosition: {x: -0.55, y: 0.356, z: 0.3}
   weaponUpgrades: []
   range: 100
   speed: 40
   fireRate: 0.2
   firePoint: {fileID: 5117189371619876158}
-  projectile: {fileID: 5192167485167254838, guid: dffbffe7148c7f246a5623ada47c902f, type: 3}
+  projectile: {fileID: 5192167485167254838, guid: 5a80e73581f187349b2ad04a0d974df2, type: 3}
   firingModes: []
   mode: 
   visuals: {fileID: 9095181206213645552}

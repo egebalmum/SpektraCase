@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb882a74ae006aa4a8be7ece4184a13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHandPosition: {x: -0.46, y: 0.24, z: 0}
   type: 2
   image: {fileID: 21300000, guid: d29336ecd485de147947a4ce53a16934, type: 3}
   itemName: RocketLauncher

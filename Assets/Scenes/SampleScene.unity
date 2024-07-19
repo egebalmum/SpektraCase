@@ -743,6 +743,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8204113707728478371, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: resetTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1845,6 +1849,10 @@ PrefabInstance:
       propertyPath: upgrade
       value: 
       objectReference: {fileID: 11400000, guid: 02e2501d41c17714abe854499f6321e8, type: 2}
+    - target: {fileID: 8204113707728478371, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: resetTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4515,6 +4523,10 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 8390301845826280328, guid: f770e6fa9722b2b418d58bf9578b9b33, type: 3}
+    - target: {fileID: 2343926820514342482, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: resetTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2443073298975101473, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -4863,6 +4875,10 @@ PrefabInstance:
       propertyPath: upgrade
       value: 
       objectReference: {fileID: 11400000, guid: b900a3f8fa4dd93498e85e023a0bcab1, type: 2}
+    - target: {fileID: 8204113707728478371, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: resetTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6425,6 +6441,10 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 6820249143814056808, guid: 32ff5b8dae1d9704795a88713eb32bb7, type: 3}
+    - target: {fileID: 2343926820514342482, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: resetTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2443073298975101473, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -15376,6 +15396,10 @@ PrefabInstance:
     - target: {fileID: 2061285845756309058, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343926820514342482, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: resetTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2443073298975101473, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
       propertyPath: m_Layer

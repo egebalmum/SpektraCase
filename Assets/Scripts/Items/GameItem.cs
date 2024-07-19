@@ -14,6 +14,7 @@ public enum GameItemType
 }
 public class GameItem : MonoBehaviour
 {
+    public Vector3 onHandPosition;
     public GameItemType type;
     public Sprite image;
     public string itemName;
