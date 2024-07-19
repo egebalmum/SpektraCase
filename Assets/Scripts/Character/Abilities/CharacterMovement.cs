@@ -70,7 +70,16 @@ public class CharacterMovement : CharacterAbility
                 characterCenter.animator.SetBool("isRunning", false);
             }
         }
-        var animDirection = Quaternion.Inverse(Quaternion.LookRotation(_orientation.lookDirection)) * moveDirection;
+
+        Vector3 animDirection;
+        if (_orientation.lookDirection == Vector3.zero)
+        {
+            animDirection = Vector3.zero;
+        }
+        else
+        {
+            animDirection = Quaternion.Inverse(Quaternion.LookRotation(_orientation.lookDirection)) * moveDirection;
+        }
         characterCenter.animator.SetFloat("moveX", animDirection.x);
         characterCenter.animator.SetFloat("moveY", animDirection.z);
 

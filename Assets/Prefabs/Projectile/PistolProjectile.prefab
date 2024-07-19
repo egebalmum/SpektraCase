@@ -146,7 +146,7 @@ MonoBehaviour:
   rotationSpeed: 25
   detectionLayerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 129
   followDuration: 0.75
   activationDelay: 0.15
 --- !u!114 &1672578261808526341

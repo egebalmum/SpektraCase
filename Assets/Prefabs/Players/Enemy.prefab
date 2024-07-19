@@ -243,7 +243,6 @@ GameObject:
   - component: {fileID: 9017461922624454689}
   - component: {fileID: 6622252633621342138}
   - component: {fileID: 6303397379987064427}
-  - component: {fileID: 7469807743237485365}
   - component: {fileID: 2021438818581718391}
   - component: {fileID: 5329439522960954765}
   - component: {fileID: 2006605270381810959}
@@ -465,21 +464,6 @@ MonoBehaviour:
   blockedEffectStates: 01000000
   isEnabled: 1
   hand: {fileID: 7845102386119421331}
---- !u!114 &7469807743237485365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4202072236442646628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f75f0064758d8d54283949f9d400a464, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockedMoveStates: 
-  blockedEffectStates: 
-  isEnabled: 1
 --- !u!114 &2021438818581718391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,13 +477,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockedMoveStates: 
-  blockedEffectStates: 
+  blockedEffectStates: 02000000
   isEnabled: 1
   currentBehaviour: {fileID: 0}
   targetName: Player1
   player: {fileID: 0}
-  chaseDistance: 14
-  shootDistance: 11
+  chaseDistance: 15
+  shootDistance: 10
   patrollingBehaviour: {fileID: 0}
   chasingBehaviour: {fileID: 0}
   shootingBehaviour: {fileID: 0}
@@ -593,7 +577,7 @@ GameObject:
   - component: {fileID: 7293489548309870472}
   - component: {fileID: 9140258132043598193}
   - component: {fileID: 7387797672471894272}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CharacterBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,7 +907,7 @@ GameObject:
   m_Component:
   - component: {fileID: 867647097977918907}
   - component: {fileID: 8295182637692036582}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}

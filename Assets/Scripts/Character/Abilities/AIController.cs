@@ -13,6 +13,7 @@ public class AIController : CharacterAbility
     [HideInInspector] public ChasingBehaviour chasingBehaviour;
     [HideInInspector] public ShootingBehaviour shootingBehaviour;
     private NavMeshAgent _aiAgent;
+    
     void Start()
     {
         _aiAgent = GetComponent<NavMeshAgent>();
@@ -61,6 +62,14 @@ public class AIController : CharacterAbility
     {
         RaycastHit hit;
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        
+        // Handle extremely close distances separately
+        if (distanceToPlayer <= 0.5f) // Adjust this threshold as needed
+        {
+            return true;
+        }
+
         if (Physics.Raycast(transform.position, directionToPlayer, out hit, chaseDistance))
         {
             if (hit.transform == player)

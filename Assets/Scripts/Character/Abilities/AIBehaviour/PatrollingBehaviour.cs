@@ -22,6 +22,7 @@ public class PatrollingBehaviour : AIBehaviour
 
     public override void OnEnter()
     {
+        _movement.GetAiController().ResetPath();
         _movement.AdjustMovementSpeed(patrolSpeed);
         GoToNextWaypoint();
     }

@@ -3,8 +3,8 @@ using UnityEngine;
 public class ChasingBehaviour : AIBehaviour
 {
     public float chaseSpeed = 4f;
-    private Vector3 lastKnownPosition;
-    private bool isChasingLastKnownPosition = false;
+    private Vector3 _lastKnownPosition;
+    private bool _isChasingLastKnownPosition = false;
     private CharacterOrientation _orientation;
     private CharacterMovement _movement;
 
@@ -17,9 +17,10 @@ public class ChasingBehaviour : AIBehaviour
 
     public override void OnEnter()
     {
+        _movement.GetAiController().ResetPath();
         _movement.AdjustMovementSpeed(chaseSpeed);
         _movement.GetAiController().isStopped = false;
-        lastKnownPosition = aiController.player.position;
+        _lastKnownPosition = aiController.player.position;
     }
 
     public override void Tick()
@@ -27,18 +28,18 @@ public class ChasingBehaviour : AIBehaviour
         if (aiController.HasLineOfSight())
         {
             _orientation.AimAtPosition(aiController.player.position);
-            lastKnownPosition = aiController.player.position;
-            _movement.GetAiController().SetDestination(lastKnownPosition);
-            isChasingLastKnownPosition = false;
+            _lastKnownPosition = aiController.player.position;
+            _movement.GetAiController().SetDestination(_lastKnownPosition);
+            _isChasingLastKnownPosition = false;
         }
-        else if (!isChasingLastKnownPosition)
+        else if (!_isChasingLastKnownPosition)
         {
-            _orientation.AimAtPosition(lastKnownPosition);
-            isChasingLastKnownPosition = true;
-            _movement.GetAiController().SetDestination(lastKnownPosition);
+            _orientation.AimAtPosition(_lastKnownPosition);
+            _isChasingLastKnownPosition = true;
+            _movement.GetAiController().SetDestination(_lastKnownPosition);
         }
 
-        if (isChasingLastKnownPosition && _movement.GetAiController().remainingDistance < 0.5f)
+        if (_isChasingLastKnownPosition && _movement.GetAiController().remainingDistance < 0.5f)
         {
             aiController.SetState(aiController.patrollingBehaviour);
         }
@@ -51,6 +52,6 @@ public class ChasingBehaviour : AIBehaviour
 
     public override void OnExit()
     {
-        isChasingLastKnownPosition = false;
+        _isChasingLastKnownPosition = false;
     }
 }

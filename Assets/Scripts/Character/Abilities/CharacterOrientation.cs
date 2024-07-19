@@ -28,7 +28,15 @@ public class CharacterOrientation : CharacterAbility
             AimAtMousePosition(mousePosition);
         }
 
-        Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+        Quaternion targetRotation;
+        if (lookDirection == Vector3.zero)
+        {
+            targetRotation = Quaternion.identity;
+        }
+        else
+        {
+            targetRotation = Quaternion.LookRotation(lookDirection);
+        }
         transform.rotation = targetRotation;
     }
 

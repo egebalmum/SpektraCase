@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5043138623993775455}
-  - component: {fileID: 4537143828308550448}
+  - component: {fileID: 5578810145631636315}
   - component: {fileID: 3932076435697729845}
   - component: {fileID: 5202754379847469231}
   - component: {fileID: 1788189241019394787}
-  - component: {fileID: 7749433349600095556}
   - component: {fileID: 8277472017000855488}
   m_Layer: 6
   m_Name: Explosive
@@ -37,7 +36,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &4537143828308550448
+--- !u!135 &5578810145631636315
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50,7 +49,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 374
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -74,10 +73,10 @@ MonoBehaviour:
   areaRadius: 7
   areaLayerMask:
     serializedVersion: 2
-    m_Bits: 151
+    m_Bits: 129
   areaDelay: 0
   models: {fileID: 0}
-  isLineOfSightNeeded: 1
+  isLineOfSightNeeded: 0
 --- !u!114 &5202754379847469231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,19 +104,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 54.5
---- !u!114 &7749433349600095556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481195401113074539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 687813e87539a8a4aa05f4148b8aec9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 0.6
 --- !u!114 &8277472017000855488
 MonoBehaviour:
   m_ObjectHideFlags: 0

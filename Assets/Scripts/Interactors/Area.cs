@@ -46,7 +46,8 @@ public class Area : Interactor
         if (_effectDelay <= 0)
         {
             _isExecuted = true;
-            DestroyInteractor();
+            //DestroyInteractor();
+            DestroyImmediate();
             return;
         }
         
@@ -91,10 +92,7 @@ public class Area : Interactor
             effect.FireEffect();
         }
 
-        if (areaDelay == 0)
-        {
-            DestroyImmediate();
-        }
+        
     }
     
     private void DestroyImmediate()
@@ -104,12 +102,12 @@ public class Area : Interactor
             .ToArray();
         _insideColliders.AddRange(hitColliders);
         DestroyInteractor();
+        _insideColliders.Clear();
     }
 
     public override void DestroyInteractor()
     {
         ExplosionDebugManager.RegisterExplosion(transform.position, areaRadius, Color.red);
-
         if (isLineOfSightNeeded)
         {
             _insideColliders.RemoveAll(collider => !HasLineOfSight(collider.transform));
@@ -126,11 +124,16 @@ public class Area : Interactor
             effect.DestroyEffect();
         }
         
-        base.DestroyInteractor();
+        Destroy(gameObject);
     }
     
     public bool HasLineOfSight(Transform otherTransform)
     {
+        float distanceToOther = Vector3.Distance(transform.position, otherTransform.position);
+        if (distanceToOther <= 0.1f) 
+        {
+            return true;
+        }
         RaycastHit hit;
         Vector3 directionToPlayer = (otherTransform.position - transform.position).normalized;
         if (Physics.Raycast(transform.position, directionToPlayer, out hit, areaRadius, areaLayerMask))
@@ -145,17 +148,17 @@ public class Area : Interactor
 
     private void OnTriggerEnter(Collider other)
     {
-        if (((1 << other.gameObject.layer) & areaLayerMask) != 0)
-        {
-            _insideColliders.Add(other);
-        }
+        //if (((1 << other.gameObject.layer) & areaLayerMask) != 0)
+        //{
+        //    _insideColliders.Add(other);
+        // }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (_insideColliders.Contains(other))
-        {
-            _insideColliders.Remove(other);
-        }
+        //if (_insideColliders.Contains(other))
+        //{
+        //    _insideColliders.Remove(other);
+        //}
     }
 }

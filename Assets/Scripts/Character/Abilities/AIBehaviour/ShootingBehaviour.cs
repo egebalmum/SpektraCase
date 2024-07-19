@@ -16,11 +16,11 @@ public class ShootingBehaviour : AIBehaviour
 
     public override void OnEnter()
     {
+        _movement.GetAiController().ResetPath();
         if (_weapon == null)
         {
             _weapon = (Weapon)GetComponent<CharacterHandleHand>().GetHandItem();
         }
-        _movement.GetAiController().ResetPath();
     }
 
     public override void Tick()

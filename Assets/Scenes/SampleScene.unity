@@ -671,9 +671,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1665635617}
     m_Modifications:
+    - target: {fileID: 743113106493791954, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1173914577686720660, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
       propertyPath: m_Name
       value: UpgradePickable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173914577686720660, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023267753061491526, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023734582385241730, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300206360945256729, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294238802366670210, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5604925854747559585, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -714,6 +738,10 @@ PrefabInstance:
     - target: {fileID: 5604925854747559585, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590706451189203370, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1499,7 +1527,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 172502043}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pickables
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1741,9 +1769,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1665635617}
     m_Modifications:
+    - target: {fileID: 743113106493791954, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1173914577686720660, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
       propertyPath: m_Name
       value: UpgradePickable (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173914577686720660, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023267753061491526, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023734582385241730, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300206360945256729, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294238802366670210, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5604925854747559585, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1784,6 +1836,10 @@ PrefabInstance:
     - target: {fileID: 5604925854747559585, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590706451189203370, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8204113707728478371, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
       propertyPath: upgrade
@@ -4431,14 +4487,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 856121106}
     m_Modifications:
+    - target: {fileID: 467014700773189098, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166335709911148913, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1173914577686720660, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
       propertyPath: m_Name
       value: ItemPickable (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173914577686720660, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060656102294044052, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061285845756309058, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2343926820514342482, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
       propertyPath: item
       value: 
       objectReference: {fileID: 8390301845826280328, guid: f770e6fa9722b2b418d58bf9578b9b33, type: 3}
+    - target: {fileID: 2443073298975101473, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818851715182677337, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5604925854747559585, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.79
@@ -4703,9 +4787,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1665635617}
     m_Modifications:
+    - target: {fileID: 743113106493791954, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1173914577686720660, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
       propertyPath: m_Name
       value: UpgradePickable (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173914577686720660, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023267753061491526, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023734582385241730, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300206360945256729, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294238802366670210, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5604925854747559585, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4746,6 +4854,10 @@ PrefabInstance:
     - target: {fileID: 5604925854747559585, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590706451189203370, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8204113707728478371, guid: b0c5459bd94693945971a2eb1e2a6bb3, type: 3}
       propertyPath: upgrade
@@ -6285,14 +6397,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 856121106}
     m_Modifications:
+    - target: {fileID: 467014700773189098, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166335709911148913, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1173914577686720660, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
       propertyPath: m_Name
       value: ItemPickable (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173914577686720660, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060656102294044052, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061285845756309058, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2343926820514342482, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
       propertyPath: item
       value: 
       objectReference: {fileID: 6820249143814056808, guid: 32ff5b8dae1d9704795a88713eb32bb7, type: 3}
+    - target: {fileID: 2443073298975101473, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818851715182677337, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5604925854747559585, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.12
@@ -6422,7 +6562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 856121106}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PickableItems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12013,7 +12153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665635617}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PickableUpgrades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15213,9 +15353,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 856121106}
     m_Modifications:
+    - target: {fileID: 467014700773189098, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166335709911148913, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1173914577686720660, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
       propertyPath: m_Name
       value: ItemPickable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173914577686720660, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060656102294044052, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061285845756309058, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443073298975101473, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818851715182677337, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5604925854747559585, guid: 3f7ced38e21f3a94c8862375c35119e7, type: 3}
       propertyPath: m_LocalPosition.x
