@@ -9,7 +9,7 @@ public class Area : Interactor
     [SerializeField] private LayerMask areaLayerMask;
     [SerializeField] private float areaDelay = 10f;
     [SerializeField] private GameObject models;
-    
+    [SerializeField] private bool isLineOfSightNeeded;
     private Collider _collider;
     private List<InteractorEffect> _effects;
     private bool _isCasted;
@@ -109,7 +109,11 @@ public class Area : Interactor
     public override void DestroyInteractor()
     {
         ExplosionDebugManager.RegisterExplosion(transform.position, areaRadius, Color.red);
-        
+
+        if (isLineOfSightNeeded)
+        {
+            _insideColliders.RemoveAll(collider => !HasLineOfSight(collider.transform));
+        }
         foreach (var effect in _effects)
         {
             foreach (var collider in _insideColliders)
@@ -122,7 +126,21 @@ public class Area : Interactor
             effect.DestroyEffect();
         }
         
-        Destroy(gameObject);
+        base.DestroyInteractor();
+    }
+    
+    public bool HasLineOfSight(Transform otherTransform)
+    {
+        RaycastHit hit;
+        Vector3 directionToPlayer = (otherTransform.position - transform.position).normalized;
+        if (Physics.Raycast(transform.position, directionToPlayer, out hit, areaRadius, areaLayerMask))
+        {
+            if (hit.transform == otherTransform)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void OnTriggerEnter(Collider other)

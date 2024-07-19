@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class InteractorSpawnEffect : InteractorEffect
 {
@@ -16,5 +15,12 @@ public class InteractorSpawnEffect : InteractorEffect
         newInteractor.ResetInteractor();
         newInteractor.PrepareInteractor(Interactor.transform);
         newInteractor.CastInteractor();
+    }
+
+
+    public void InstantiateInteractor()
+    {
+        interactor = Instantiate(interactor, Vector3.zero, Quaternion.identity);
+        interactor.gameObject.SetActive(false);
     }
 }

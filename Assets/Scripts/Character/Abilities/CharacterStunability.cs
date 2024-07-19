@@ -19,6 +19,7 @@ public class CharacterStunability : CharacterAbility
         {
             _isStunned = false;
             characterCenter.SetEffectState(CharacterEffectState.Idle);
+            characterCenter.animator.speed = 1;
         }
 
         _remainingTime -= Time.deltaTime;
@@ -38,6 +39,7 @@ public class CharacterStunability : CharacterAbility
         _isStunned = true;
         _remainingTime = time;
         characterCenter.SetEffectState(CharacterEffectState.Stunned);
+        characterCenter.animator.speed = 0;
     }
 
     public override void OnDeath()

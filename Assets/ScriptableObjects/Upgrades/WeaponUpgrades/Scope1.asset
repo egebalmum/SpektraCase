@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Scope1
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 2fb427769c23bd6449a1a38144550ac7, type: 3}
-  scopeMultiplier: 1.5
+  scopeMultiplier: 2

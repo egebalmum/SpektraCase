@@ -20,7 +20,7 @@ public class ShootingBehaviour : AIBehaviour
         {
             _weapon = (Weapon)GetComponent<CharacterHandleHand>().GetHandItem();
         }
-        _movement.GetAiController().isStopped = true;
+        _movement.GetAiController().ResetPath();
     }
 
     public override void Tick()

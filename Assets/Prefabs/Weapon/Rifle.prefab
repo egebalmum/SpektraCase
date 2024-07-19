@@ -92,6 +92,7 @@ MonoBehaviour:
   firingModes: []
   mode: 
   visuals: {fileID: 8436218243588881893}
+  fx: {fileID: 19885060, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
 --- !u!114 &1492730149661146225
 MonoBehaviour:
   m_ObjectHideFlags: 0

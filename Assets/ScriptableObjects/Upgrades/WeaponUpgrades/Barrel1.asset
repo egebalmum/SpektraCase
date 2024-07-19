@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Barrel1
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: fcd91fb8950b4e44cbc03d675a06b440, type: 3}
-  damageMultiplier: 1.5
+  damageMultiplier: 2

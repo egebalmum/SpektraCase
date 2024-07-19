@@ -12,9 +12,10 @@ public class AIController : CharacterAbility
     [HideInInspector] public PatrollingBehaviour patrollingBehaviour;
     [HideInInspector] public ChasingBehaviour chasingBehaviour;
     [HideInInspector] public ShootingBehaviour shootingBehaviour;
-
+    private NavMeshAgent _aiAgent;
     void Start()
     {
+        _aiAgent = GetComponent<NavMeshAgent>();
         player = FindObjectsOfType<CharacterCenter>().First(character => character.name.Equals(targetName)).transform;
         InitializeBehaviour(ref patrollingBehaviour);
         InitializeBehaviour(ref chasingBehaviour);
@@ -34,6 +35,18 @@ public class AIController : CharacterAbility
 
     public override void Tick()
     {
+        if (characterCenter.effectState == CharacterEffectState.Stunned)
+        {
+            _aiAgent.isStopped = true;
+            return;
+        }
+
+        if (_aiAgent.isStopped)
+        {
+            _aiAgent.isStopped = false;
+            return;
+        }
+        
         currentBehaviour?.Tick();
     }
 

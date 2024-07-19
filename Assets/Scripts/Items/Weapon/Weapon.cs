@@ -18,6 +18,7 @@ public class Weapon : GameItem
     private FiringMode _currentFiringMode;
     private bool _isTriggerReady = true;
     private bool _isPlayerControlled;
+    [SerializeField] private ParticleSystem fx;
 
     public override void Initialize(CharacterCenter _owner)
     {
@@ -39,9 +40,8 @@ public class Weapon : GameItem
         {
             foreach (var spawnEffect in spawnEffects)
             {
+                spawnEffect.InstantiateInteractor();
                 InstantiateChildInteractors(spawnEffect.interactor);
-                spawnEffect.interactor = Instantiate(spawnEffect.interactor, Vector3.zero, Quaternion.identity);
-                spawnEffect.interactor.gameObject.SetActive(false);
             }
         }
     }
@@ -83,6 +83,7 @@ public class Weapon : GameItem
     {
         _currentFiringMode.Fire(fireRate, TriggerWeapon, SetTriggerReady);
         SetTriggerReady(false);
+        Instantiate(fx, firePoint.position, firePoint.rotation);
     }
 
     public void ChangeFiringMode()

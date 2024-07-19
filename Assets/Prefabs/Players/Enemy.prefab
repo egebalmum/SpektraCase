@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockedMoveStates: 
-  blockedEffectStates: 
+  blockedEffectStates: 01000000
   isEnabled: 1
   movementSpeed: 6
   moveDirection: {x: 0, y: 0, z: 0}
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockedMoveStates: 
-  blockedEffectStates: 
+  blockedEffectStates: 01000000
   isEnabled: 1
   lookDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &6622252633621342138
@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockedMoveStates: 
-  blockedEffectStates: 
+  blockedEffectStates: 01000000
   isEnabled: 1
   hand: {fileID: 7845102386119421331}
 --- !u!114 &7469807743237485365

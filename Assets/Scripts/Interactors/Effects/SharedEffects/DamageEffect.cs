@@ -21,7 +21,11 @@ public class DamageEffect : InteractorEffect
         {
             return;
         }
-        
+
+        if (armorPenetration > 1)
+        {
+            armorPenetration = 1;
+        }
         float damageToHealth = damage * armorPenetration;
         float damageToArmor = damage * (1 - armorPenetration);
 

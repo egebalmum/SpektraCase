@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5192167485167254838}
   - component: {fileID: 8035437783399202706}
   - component: {fileID: 4929402031644533779}
+  - component: {fileID: 946908515466699934}
+  - component: {fileID: 52683132828000328}
   m_Layer: 6
   m_Name: RifleProjectile
   m_TagString: Untagged
@@ -83,7 +85,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.1875
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5192167485167254838
 MonoBehaviour:
@@ -112,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307fb20c001c6c44092304b90b07bfdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorPenetration: 0.2
+  armorPenetration: 0.25
   damage: 20
 --- !u!114 &4929402031644533779
 MonoBehaviour:
@@ -127,6 +129,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 10
+--- !u!114 &946908515466699934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470580081107731200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb2c9a5875776c40b8834cd5b8a0608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fx: {fileID: 198104090543139058, guid: 4430919f14c50f84085d287cbcb2c30e, type: 3}
+  upVector: {x: 0, y: 0, z: 0}
+  onCold: 0
+  onHot: 1
+  onDestroy: 0
+--- !u!114 &52683132828000328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470580081107731200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb2c9a5875776c40b8834cd5b8a0608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fx: {fileID: 198670200411678530, guid: 289ba3245c9c98c42aeb93d5f45a2248, type: 3}
+  upVector: {x: 0, y: 0, z: 0}
+  onCold: 1
+  onHot: 0
+  onDestroy: 0
 --- !u!1 &6710649599851497462
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +450,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.125
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4925,8 +4961,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d7f222b2fdc4cd4899dd16aacd0b873, type: 2}
-  - {fileID: 2100000, guid: 2d7f222b2fdc4cd4899dd16aacd0b873, type: 2}
+  - {fileID: 2100000, guid: 43661ff2635bdc947b87d5d0f816367e, type: 2}
+  - {fileID: 2100000, guid: 43661ff2635bdc947b87d5d0f816367e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

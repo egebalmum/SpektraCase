@@ -15,9 +15,10 @@ public class LookCamera : MonoBehaviour
     {
         if (mainCamera != null)
         {
-            Vector3 direction = mainCamera.transform.position - transform.position;
-            direction.y = 0; // Keep the y-axis constant if you don't want the object to tilt
-            transform.rotation = Quaternion.LookRotation(-direction);
+            transform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.forward, mainCamera.transform.rotation * Vector3.up);
+            //Vector3 direction = mainCamera.transform.position - transform.position;
+            //direction.y = 0; 
+            //transform.rotation = Quaternion.LookRotation(-direction);
         }
     }
 }

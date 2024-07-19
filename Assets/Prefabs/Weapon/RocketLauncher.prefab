@@ -54,7 +54,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   weaponUpgrades: []
   range: 100
-  speed: 40
+  speed: 35
   fireRate: 2
   firePoint: {fileID: 2694575274674220500}
   projectile: {fileID: 5192167485167254838, guid: a3b95843577108a4a934c845ddf5710d, type: 3}
@@ -62,6 +62,7 @@ MonoBehaviour:
   - {fileID: 0}
   mode: 
   visuals: {fileID: 4357666921865815248}
+  fx: {fileID: 19885060, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
 --- !u!114 &7731628037347841199
 MonoBehaviour:
   m_ObjectHideFlags: 0
