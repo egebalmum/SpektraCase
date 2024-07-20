@@ -171,7 +171,7 @@ MonoBehaviour:
   blockedMoveStates: 
   blockedEffectStates: 
   isEnabled: 1
-  startHealthPoint: 1000000
+  startHealthPoint: 100
 --- !u!114 &2966557781298206166
 MonoBehaviour:
   m_ObjectHideFlags: 0
