@@ -39,8 +39,11 @@ public class Projectile : Interactor
         {
             return;
         }
+        if (_remainingDistance <= 0)
+        {
+            DestroyInteractor();
+        }
         MoveProjectile();
-        
     }
 
     private void Update()
@@ -182,13 +185,10 @@ public class Projectile : Interactor
 
     public void MoveProjectile()
     {
-        if (_remainingDistance <= 0)
-        {
-            DestroyInteractor();
-        }
+        _rigidbody.velocity = _direction * _speed;
         Vector3 previousPosition = transform.position;
         Vector3 newPosition = previousPosition + _direction * (_speed * Time.fixedDeltaTime);
-        _rigidbody.MovePosition(newPosition);
+        //_rigidbody.MovePosition(newPosition);
         _remainingDistance -= Vector3.Distance(previousPosition, newPosition);
     }
 
